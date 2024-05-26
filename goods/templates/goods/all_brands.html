@@ -1,0 +1,21 @@
+{% extends "main/page.html" %}
+{% load static %}
+{% load goods_tags %}
+
+{% block modal_cart %}
+  {% include "carts/includes/modal_cart.html" %}
+{% endblock modal_cart %}
+
+{% block page %}
+<div class="page-items">
+  <div class="brands-page">
+    <div class="brands-container">
+      {% for brand in brands %}
+        <a href='{% url "catalog:brand" brand.slug %}' class="brand-link">
+          <div>{{ brand }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock page %}

@@ -1,0 +1,65 @@
+/* Dropdown Button */
+.dropbtn {
+  background-color: white;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 20px 0;
+  font-family: "Roboto-Light";
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  transition: all 0.4s;
+  color: rgb(225, 0, 249);
+}
+
+.filter-wrap {
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 80px;
+  background-color: #fff;
+  z-index: 2;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown-filter {
+  position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-filter__content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.2);
+  z-index: 2;
+  border-radius: 3%;
+  top: 35px;
+  right: 0px;
+}
+
+/* Links inside the dropdown */
+.dropdown-filter__content button {
+  padding: 10px;
+  border: none;
+  background-color: #fff;
+  display: flex;
+  width: 160px;
+  border-radius: 3%/13%;
+  font-family: "Roboto-Light";
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-filter__content button:hover {
+  transition: all 0.2s;
+  color: rgb(225, 0, 249);
+  border-radius: 3%/13%;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display:block;
+}

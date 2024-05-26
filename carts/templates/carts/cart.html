@@ -1,0 +1,10 @@
+{% extends "main/page.html" %}
+{% load static %}
+{% load carts_tags %}
+{% user_carts request as carts %}
+
+{% block page %}
+  <div class="cart-container" id="cart-items-container">
+    {% include "carts/includes/cart_product.html" %}
+  </div>
+{% endblock %}

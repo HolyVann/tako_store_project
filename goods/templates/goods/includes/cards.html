@@ -1,0 +1,84 @@
+{% load static %}
+
+
+<div class="item-card">
+  <a class="main-item-img" href="{% url "catalog:product" product.slug %}">
+    {% if product.image.url %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}"/>
+    {% endif %}
+
+    <!-- <img class="hidden-img" src="{{ product.images.first.image.url }}" alt="{{ product.name }}"/> -->
+
+    <div class="item-card__gallery">
+      {% for img in product.images.all  %}
+        <div class="item-card__gallery-imgs-container">
+          <img class="item-card__gallery-img" src="{{ img.image.url }}" alt="">
+        </div>
+      {% endfor %}
+
+      <!-- <div class="item-cartd__gallery-progress">
+        <div  class="item-cartd__gallery-progress-line"></div>
+        <div class="item-cartd__gallery-progress-line"></div>
+        <div class="item-cartd__gallery-progress-line"></div>
+      </div> -->
+    </div>
+
+    {% if product.discount %}
+      <div class="item-card__label-sale">
+        SALE
+      </div>
+
+      <div class="item-card__label-sale-discount">
+        -{{product.discount}}%
+      </div>
+    {% endif %}
+  </a>
+
+  <div class='item-card__wrap'>
+    <div class='item-card__wrap-left'>
+      {% comment %} <a href="{% url "catalog:brands" product.brand.slug %}" class="item-card__brand">{{ product.brand }}</a> {% endcomment %}
+      <a class="item-card__brand">{{ product.brand }}</a>
+      <a href="{% url "catalog:product" product.slug %}" class="item-card__title">{{ product.name }}</a>
+
+      {% if product.discount %}
+        <div class="item-card__discount-wrap">
+          <div class="item-card__old-price">{{ product.price }} BYN</div>
+
+          <div class="item-card__price">{{ product.sell_price }} BYN</div>
+        </div>
+      {% else %}
+        <div class="item-card__price">{{ product.price }} BYN</div>
+      {% endif %}
+    </div>
+
+
+    {% comment %} {% if product.quantity != 0 %}
+      <div class="item-card__add-to">
+        <a href="{% url "cart:cart_add_modal" %}" class="favorites__add-cart add-to-cart-ajax"
+          data-product-id='{{ product.id }}'>
+          {% csrf_token %}
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="favorite" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %} {% endcomment %}
+  </div>
+
+  <div class="item-card__add-to-favorites">
+    <a href="{% url "favorite:favorite_add" %}" class='favorite-item add-to-favorites-ajax' data-product-id='{{ product.id }}'>
+      {% csrf_token %}
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart " viewBox="0 0 16 16">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+      </svg>
+    </a>
+  </div>
+
+  {% if product.is_new %}
+    <div class="item-card__label-new">
+      NEW
+    </div>
+  {% endif %}
+</div>

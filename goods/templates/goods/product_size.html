@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+{% load goods_tags %}
+
+
+{% block modal_cart %}
+  {% include "carts/includes/modal_cart.html" %}
+{% endblock modal_cart %}
+
+{% block content %}
+<div class="page-block">
+  <div class="product-content">
+    <div class="product-page__left">
+      <div class="product-page__slider">
+        <div class="product-page__main-img">
+          <img class="product-page__img" src="{{ product.image.url }}"/>
+
+          {% if product.is_new %}
+            <div class="item-card__label-new">
+              NEW
+            </div>
+          {% endif %}
+
+          {% if product.discount %}
+            <div class="item-card__label-sale">
+              SALE
+            </div>
+
+            <div class="product-page__label-sale-discount">
+              -{{product.discount}}%
+            </div>
+          {% endif %}
+        </div>
+
+        {% for product_image in images %}
+          <img class="product-page__img" src="{{ product_image.image.url }}"/>
+        {% endfor %}
+      </div>
+
+      {% if product.description %}
+        <div class="product-page__description">
+          <div class="product-page__description-title">
+            О товаре
+          </div>
+
+          <div class="product-page__description-main">
+            {{ product_variant.product.description }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-page__main">
+      <div class="product-page__title-wrap">
+        <a href='{% url "catalog:brand" product.brand.slug %}' class="product-page__brand">{{ product_variant.product.brand }}</a>
+
+        <div class="product-page__title">{{ product_variant.product.name }}</div>
+      </div>
+
+      {% if product.discount %}
+        <div class="product-page__price-wrap">
+          <div class="product-page__discount-wrap">
+            <div class="product-page__old-price">{{ product_variant.product.price }} BYN</div>
+
+            <div class="product-page__price">{{ product_variant.product.sell_price }} BYN</div>
+          </div>
+
+        </div>
+      {% else %}
+        <div class="product-page__price">{{ product_variant.product.sell_price }} BYN</div>
+      {% endif %}
+
+      <div class="product-page__sizes">
+        {% for variant in product_variants %}
+          {% if product_variant.size.slug == variant.size.slug %}
+            <div class='product-page__size'>{{ variant.size }}</div>
+          {% else %}
+            <a href="{% url 'catalog:product' product.slug variant.size.slug %}" class='product-page__size-link'>{{ variant.size }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="add-to">
+        <div class="add-to-cart" id='cart-button'>
+          {% if product_variant.quantity == 0 %}
+          <a class='product-sold-out'>
+            Нет в наличии
+          </a>
+          {% comment %} {% elif product_in_cart %}
+            {% include "carts/includes/cart_button.html" %} {% endcomment %}
+          {% else %}
+            <a href="{% url 'cart:cart_add_modal' %}" class='add-to-cart-ajax' data-product-id='{{ product_variant.id }}'>
+              {% csrf_token %}
+              Добавить в корзину
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="add-to-favorite add-to-favorites">
+          <a href="{% url "favorite:favorite_add" %}" class='favorite-item add-to-favorites-ajax' data-product-id='{{ product_variant.product.id }}'>
+            {% csrf_token %}
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart " viewBox="0 0 16 16">
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-block">
+    <div class="main-block__top">
+      <div class="main-block__title">Вам может понравиться</div>
+    </div>
+
+    <div class="main-block__content">
+      <div class="items">
+        {% for product in goods %}
+        {% include "goods/includes/cards.html" %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

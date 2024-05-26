@@ -1,0 +1,247 @@
+#id_image {
+  display: none;
+}
+
+.avatar:hover {
+  color: rgb(225, 0, 249);
+  cursor: pointer;
+  border-color: #000;
+}
+
+.profile-container, .login-container, .registration-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.profile-container {
+  gap: 100px;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.registration-form, .login-form, .profile-form {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto-Light';
+  gap: 25px;
+  width: 350px;
+  padding: 20px;
+  box-shadow: 0 0 15px 0px #e5e5e5;
+}
+
+.login-form input, .registration-form input, .profile-form input{
+  all: unset;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  font-size: 15px;
+}
+
+.login-form button, .registration-form button, .profile-form button {
+  all: unset;
+  padding: 17px 0px;
+  color: #fff;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  border: solid 1px #000;
+}
+
+.login-form button:hover, .registrations-link:hover, .profile-form button:hover, .registration-form button:hover, .logout:hover, .admin:hover {
+  color: rgb(225, 0, 249);
+  border: solid 1px #000;
+  transition: all .5s;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.login-form input:focus, .login-form input:hover, .registration-form input:focus, .registration-form input:hover,
+.profile-form input:focus, .profile-form input:hover {
+  border-color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+
+.login-form button:disabled, .registration-form button:disabled, .profile-form button:disabled {
+  opacity: .8;
+}
+
+.login-form button:disabled:hover, .registration-form button:disabled:hover, .profile-form button:disabled:hover {
+  color: black;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.social-login__links a {
+  text-decoration: none;
+  color: #000;
+  margin: 0px 15px;
+}
+
+.social-login__title {
+  font-size: 15px;
+}
+
+.social-login__links a:hover {
+  color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+.registrations-link, .avatar, .logout, .admin {
+  text-decoration: none;
+  color: #fff;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  padding: 17px 0px;
+  border: solid 1px #000;
+}
+
+.password {
+  color: black;
+  font-size: 15px;
+  width: max-content;
+}
+
+.password:hover {
+  text-decoration: none;
+  color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+.profile-container form img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.not-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid .1px;
+  gap: 5px;
+}
+
+.not-img:hover {
+  cursor: pointer;
+}
+
+.not-img_txt {
+  text-align: center;
+}
+
+.orders-title, .personal-title {
+  font-size: 25px;
+  color: rgb(225, 0, 249);
+  font-family: 'Roboto-Light';
+  align-self: flex-start;
+}
+
+.personal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.personal-login,.orders-catalog,.entrance, .orders-catalog a {
+  font-family: 'Roboto-Light';
+  color:#000;
+  font-size: 20px;
+}
+
+.orders-catalog a,.entrance a {
+  text-decoration:  solid underline .1px;
+}
+
+.orders-catalog, .entrance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: rgb(225, 0, 249);
+}
+
+.entrance {
+  padding: 200px 0px;
+
+}
+
+.personal-login:hover, .orders-catalog a:hover {
+  color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+
+
+.field-errors {
+  color: #ff0000;
+}
+
+.field-errors ul {
+  list-style-type: none;
+  text-decoration: solid underline .1px;
+}
+
+.admin {
+  margin-bottom: 300px;
+}
+
+.password-control {
+  position: absolute;
+  color:#000;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 0;
+  height: 18px;
+}
+
+.password-control svg {
+  box-sizing: border-box;
+}
+
+.password-control:hover {
+  color: rgb(225, 0, 249);
+  transition: all .4s;
+  cursor: pointer;
+}
+
+.hide-password {
+  visibility: hidden;
+}
+
+.password-container:focus-within, .password-container:hover {
+  border-color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+.password-container {
+  position: relative;
+  border-bottom: 1px solid;
+  padding-bottom: 15px;
+}
+
+.password-container input {
+  width: 90%;
+  border-bottom: none;
+  padding: 0;
+}

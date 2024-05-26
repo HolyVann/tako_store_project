@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% load carts_tags %}
+{% user_carts request as carts %}
+
+
+{% block content %}
+<div class="page-block">
+  <div class="page-head">
+    <div class="page-title">
+      {% if request.GET.q %} Результат поиска по запросу: &laquo;{{ request.GET.q}}&raquo; {% else %} {{ page_title }} {% endif %}
+    </div>
+  </div>
+
+  <div class="page-content">{% block page %}{% endblock page %}</div>
+</div>
+{% endblock content %}

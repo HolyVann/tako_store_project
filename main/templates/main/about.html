@@ -1,0 +1,12 @@
+{% extends "main/page.html" %}
+{% load static %}
+
+{% block modal_cart %}
+  {% include "carts/includes/modal_cart.html" %}
+{% endblock modal_cart %}
+
+{% block page %}
+  <div class="about-content">
+    {{ content }}
+  </div>
+{% endblock page %}

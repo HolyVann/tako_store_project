@@ -1,0 +1,55 @@
+{% load static %}
+{% load carts_tags %}
+
+{% user_carts request as carts %}
+
+<div class="order-products">
+  {% for cart in carts  %}
+    <div class='cart-order-product'>
+      <a class='order-cart-img' href="{% url "catalog:product" cart.product_variant.product.slug %}">
+        <img class="order-product__img" src="{{ cart.product_variant.product.image.url }}">
+        <span class="counter-order">{{ cart.quantity }} </span>
+      </a>
+
+
+        <div class="order-product-title-wrap">
+          <a href="{% url "catalog:product" cart.product_variant.product.slug %}" class="cart-product__title">
+            {{ cart.product_variant.product.name }} {{ cart.product_variant.product.brand}} {{ cart.product_variant.size.name }}
+          </a>
+
+          <div class="order-product__prices">
+            {% if cart.product_variant.product.discount %}
+              <div class="cart-product__price-wrap">
+                <div class="cart-product__old-price">{{ cart.products_price }} BYN</div>
+
+                <div class="cart-product__discount">(-{{ cart.product_variant.product.discount }}%)</div>
+              </div>
+
+              <div class="cart-product__price">{{ cart.products_sell_price }} BYN</div>
+            {% else %}
+              <div class="cart-product__price">{{ cart.products_price }} BYN</div>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="order-items__footer">
+  <div class="order__total">
+    <div class="delivery">
+      <span>Всего товаров {{ carts.total_quantity }}:</span>
+      <span>{{ carts.total_price }} BYN</span>
+    </div>
+
+    <div class="delivery">
+      <span>Доставка:</span>
+      <span>Бесплатно</span>
+    </div>
+
+    <div class="order__total-price">
+      <span>Итого:</span>
+      <span>{{ carts.total_price }} BYN</span>
+    </div>
+  </div>
+</div>

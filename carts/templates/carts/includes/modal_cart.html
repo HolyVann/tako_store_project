@@ -1,0 +1,28 @@
+{% load static %}
+{% load carts_tags %}
+{% user_carts request as carts %}
+
+<div id="cartModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-head">
+      <div></div>
+
+      <div class="modal-title">Корзина</div>
+
+      <div class="modal__cart-close">
+        <span>&times;</span>
+      </div>
+    </div>
+
+    <div class="modal-items__container" id="cart-items-container">
+      {% if carts %}
+        {% include "carts/includes/cart_product_modal.html" %}
+      {% else %}
+        {% include "carts/includes/modal_cart_empty.html" %}
+      {% endif %}
+    </div>
+
+    <div></div>
+  </div>
+</div>

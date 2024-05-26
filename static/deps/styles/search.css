@@ -1,0 +1,96 @@
+#myBtn {
+  border: none;
+  background: none;
+  color: #000;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  border-bottom: solid .1px;
+  padding-bottom: 10px;
+  gap: 10px;
+  border-color: #000;
+}
+
+.search-form:hover {
+  border-color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  color: #000;
+}
+
+.search-button:hover  {
+  color: rgb(225, 0, 249);
+  transition: all .4s;
+  cursor: pointer;
+}
+
+.search-field {
+  all: unset;
+  padding: 0;
+  font-family: "Roboto-Light";
+  font-size: 25px;
+  color:black;
+  width: 100%;
+}
+
+.search-field::placeholder {
+  color: black;
+  opacity: .7;
+}
+
+/* The Modal (background) */
+.search-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100px; /* Full height */
+  background-color: #fff; /* Fallback color */
+  padding: 0px 100px;
+}
+
+/* Modal Content/Box */
+.search-content {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-content>* {
+  flex-basis: 33%;
+}
+
+/* The Close Button */
+.close>span {
+  color: #aaa;
+  font-size: 45px;
+  padding-bottom: 10px;
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close>span:hover,
+.close>span:focus {
+  color: rgb(225, 0, 249);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .4s;
+}

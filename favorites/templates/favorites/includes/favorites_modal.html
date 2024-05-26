@@ -1,0 +1,27 @@
+{% load static %}
+{% load favorites_tags %}
+
+{% user_favorites request as favorites %}
+
+<div id="favoritesModal" class="modal">
+  <div class="modal-content">
+
+    <div class="modal-head">
+      <div></div>
+
+      <div class="modal-title">Избранное</div>
+
+      <div class="modal__favorites-close">
+        <span>&times;</span>
+      </div>
+    </div>
+
+    <div class='modal-items__container' id='favorites-items-container'>
+      {% if favorites %}
+        {% include "favorites/includes/favorites_product.html" %}
+      {% else %}
+        {% include "favorites/includes/favorites_modal_empty.html" %}
+      {% endif %}
+    </div>
+  </div>
+</div>

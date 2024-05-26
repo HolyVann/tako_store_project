@@ -1,0 +1,68 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href={% static "deps/styles/style.css" %}>
+  <link rel="stylesheet" href={% static "deps/styles/sass/style.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/dropdown_filter.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/search.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/users.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/notifications.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/cart.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/favorites.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/modal.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/orders.css" %} >
+  <!-- <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css"> -->
+  <link rel="apple-touch-icon" sizes="180x180" href={% static "deps/favicon/apple-touch-icon.png" %}>
+  <link rel="icon" type="image/png" sizes="32x32" href={% static "deps/favicon/favicon-32x32.png"%}>
+  <link rel="icon" type="image/png" sizes="16x16" href={% static "deps/favicon/favicon-16x16.png"%}>
+  <link rel="manifest" href={% static "deps/site.webmanifest" %}>
+  <link rel="mask-icon" href={% static "deps/safari-pinned-tab.svg" color="#5bbad5" %}>
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  {% block modal_cart %}{% endblock modal_cart %}
+
+  {% include 'includes/header.html' %}
+
+  {% include "includes/notifications.html" %}
+
+  <main>
+
+    <div class="white"></div>
+
+    {% block content %}{% endblock content %}
+  </main>
+
+  {% include 'includes/footer.html' %}
+
+  <div class="button-up">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="arrow-up-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
+      </symbol>
+    </svg>
+    <div class="btn-up btn-up_hide">
+      <svg class="btn-up-icon" role="img" aria-label="Прокрутить страницу к началу">
+        <use xlink:href="#arrow-up-short"></use>
+      </svg>
+    </div>
+  </div>
+
+  <script src={% static "deps/js/jquery/jquery-3.7.0.min.js" %}></script>
+  <script src={% static "deps/js/jquery_ajax_cart.js" %}></script>
+  <script src={% static "deps/js/jquery_ajax_favorites.js" %}></script>
+  <script src={% static "deps/js/main.js" %}></script>
+  <script src={% static "deps/js/dropdown_filter.js" %}></script>
+  <script src={% static "deps/js/modals.js" %}></script>
+  <script src={% static "deps/js/bootstrap/bootstrap.bundle.min.js" %}></script>
+</body>
+</html>

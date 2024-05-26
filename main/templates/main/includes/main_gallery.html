@@ -1,0 +1,45 @@
+{% load static %}
+
+<div class="main-gallery__container">
+  <div class="first-gallery-block">
+    <a href="{% url 'catalog:new' %}">
+      <div class="title-first-gallery">Новинки</div>
+
+      <img src="{% static "deps\media\d4b5d7766c2a4ed8ce686506dba8d1c7.jpg" %}" alt="">
+    </a>
+
+    <a href="{% url 'catalog:sale' %}">
+      <div class="title-first-gallery">Sale</div>
+
+      <img src="{% static "deps\media\4699680c589cb9944a6588a46dd626e6.jpg" %}" alt="">
+    </a>
+  </div>
+
+  <div class="second-gallery-block">
+    <a href="{% url 'catalog:index' "dzhinsy" %}">
+      <div class="title-second-gallery">Джинсы</div>
+
+      <img src="{% static "deps\media\JEANs.jpg" %}" alt="">
+    </a>
+  </div>
+
+  <div class="third-gallery-block">
+    <a href="{% url 'catalog:index' "bryuki" %}">
+      <div class="title-third-gallery">Брюки</div>
+
+      <img src="{% static "deps\media\b2cefa50f5298f978420e821303e4ce6.jpg" %}" alt="">
+    </a>
+
+    <a href="{% url 'catalog:index' "futbolki" %}">
+      <div class="title-third-gallery">Футболки</div>
+
+      <img src="{% static "deps\media\9612fac8d787abdee6bedf0e6b593673.jpg" %}" alt="">
+    </a>
+
+    <a href="{% url 'catalog:index' "yubki" %}">
+      <div class="title-third-gallery">Юбки</div>
+
+      <img src="{% static "deps\media\pencil-skirt-tee-statement-sandals.webp" %}" alt="">
+    </a>
+  </div>
+</div>

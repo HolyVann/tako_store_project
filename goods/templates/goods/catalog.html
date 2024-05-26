@@ -1,0 +1,64 @@
+{% extends "main/page.html" %}
+{% load static %}
+{% load goods_tags %}
+
+{% block modal_cart %}
+  {% include "carts/includes/modal_cart.html" %}
+{% endblock modal_cart %}
+
+
+{% block page %}
+  {% if not goods %}
+    <div class="no-result">
+      <div class="no-result__title">
+        Ничего не нашлось <br>
+        Поробуйте измнеить ваш поисковый запрос
+      </div>
+
+      <div class="search-content">
+        <div></div>
+        <form class='search-form' role='search' action="{% url "catalog:search" %}" method="get">
+          <input class="search-field" type="text" name="q" placeholder="Поиск">
+          <button class="search-button" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+            </svg>
+          </button>
+        </form>
+
+        <div></div>
+      </div>
+    </div>
+  {% else %}
+
+    <div class="page-items">
+      <div class="filter-wrap">
+        <div class="dropdown-filter">
+          <button onclick="myFunction()" class="dropbtn">Сортировать</button>
+          <div id="myDropdown" class="dropdown-filter__content">
+
+            <form class='filter-form' action="{% if request.GET.q %}{% url 'catalog:search' %}{% else %}{% url 'catalog:index' slug_url %}{% endif %}" method="get">
+              {% if request.GET.q %}
+                <input type="hidden" name="q" value="{{ request.GET.q }}">
+              {% endif %}
+
+              <button type="submit" name="order_by" value="default">По умолчанию</button>
+              <button type="submit" name="order_by" value="price">По возрастанию цены</button>
+              <button type="submit" name="order_by" value="-price">По убыванию цены</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="items">
+        {% for product in goods %}
+          {% include "goods/includes/cards.html" %}
+        {% endfor %}
+      </div>
+
+      {% include "goods/includes/pagination.html" %}
+    </div>
+
+  {% endif %}
+{% endblock page %}

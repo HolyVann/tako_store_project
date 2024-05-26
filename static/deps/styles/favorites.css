@@ -1,0 +1,42 @@
+#favoritesBtn {
+  border: none;
+  background: none;
+  color: #000;
+  cursor: pointer;
+  position: relative;
+}
+
+#favoritesBtn:hover {
+  transition: all .4s;
+  color: rgb(225, 0, 249);
+}
+
+.favorites__add-cart{
+  text-decoration: none;
+  color: #000;
+}
+
+.favorites__add-cart:hover {
+  color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+.modal-items__favorites {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 20px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+}
+
+.favorites-product__description {
+  display: flex;
+  align-items: flex-start;
+  gap: 70px;
+}

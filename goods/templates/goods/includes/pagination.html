@@ -1,0 +1,27 @@
+{% load goods_tags %}
+
+
+<div class="pagination">
+  <div class="pagination-wrap {% if not goods.has_previous  %}hidden{% endif %}">
+    <a href="{% if goods.has_previous  %}?{% change_params page=goods.previous_page_number %}{% else %}#{% endif %}">
+      <div class="arrow">←</div>Назад
+    </a>
+  </div>
+
+  {% for page in goods.paginator.page_range %}
+  {% if goods.paginator.page_range|length == 1 %}
+  {% else %}
+  {% if page >= goods.number|add:-2 and page <= goods.number|add:2 %}
+    <div class="pagination-wrap {% if goods.number == page %}active{% endif %}">
+      <a href="?{% change_params page=page %}">{{ page }}</a>
+    </div>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+
+  <div class="pagination-wrap {% if not goods.has_next  %}hidden{% endif %}">
+    <a href="{% if goods.has_next  %}?{% change_params page=goods.next_page_number %}{% else %}#{% endif %}">Дальше
+      <div class="arrow">→</div>
+    </a>
+  </div>
+</div>

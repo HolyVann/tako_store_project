@@ -1,0 +1,92 @@
+{% extends "main/page.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% user_carts request as carts %}
+
+{% block page %}
+  <div class="order-page">
+    <div class="back-to-cart">
+      <a href="{% url 'user:cart' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+        </svg>
+        В корзину</a>
+    </div>
+    <div class="create-order-container">
+      <form class="order-form" action="{% url "orders:checkout" %}" method="post">
+        {% csrf_token %}
+
+        <div class="order-information-container">
+          <div class="order-information-form">
+            <div class="order-information-title">Ваши данные</div>
+            <input type="text" placeholder="Имя" id="id_first_name"
+                  value='{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}'
+                  name="first_name" required>
+            {% if form.first_name.errors %}
+              <div class="field-errors">{{ form.first_name.errors }}</div>
+            {% endif %}
+
+            <div class="order-information-title">Контакты</div>
+            <input type="email" name="email" id="id_email" placeholder="Email"
+                  value='{% if form.email.value %}{{ form.email.value }}{% endif %}'
+                  required>
+            {% if form.email.errors %}
+              <div class="field-errors">{{ form.email.errors }}</div>
+            {% endif %}
+
+            <input type="text" placeholder="Телефон" id="id_phone_number"
+                  value='{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}'
+                  name="phone_number" required>
+            {% if form.phone_number.errors %}
+              <div class="field-errors">{{ form.phone_number.errors }}</div>
+            {% endif %}
+
+            <div class="order-information-title">Способ доставки</div>
+            <div class="radio-button-container">
+              <input type="radio" name="requires_delivery" id="id_requires_delivery"  value="0">
+              <label for="id_requires_delivery">Самовывоз</label>
+            </div>
+
+            <div class="radio-button-container">
+              <input type="radio" name="requires_delivery" id="id_requires_delivery" value="1" checked>
+              <label for="id_requires_delivery">Доставка курьером</label>
+            </div>
+
+            <input type="text" placeholder="Адрес доставки" id="id_delivery_address" name='delivery_address'>
+            {% if form.delivery_address.errors %}
+              <div class="field-errors">{{ form.delivery_address.errors }}</div>
+            {% endif %}
+
+            <div class="order-information-title">Способ оплаты</div>
+            <div class="radio-button-container">
+              <input type="radio" name="payment_on_get" id="id_payment_on_get" value="0" checked>
+              <label for="id_requires_delivery">Оплата онлайн</label>
+            </div>
+
+            <div class="radio-button-container">
+              <input type="radio" name="payment_on_get" id="id_payment_on_get"  value="1">
+              <label for="id_requires_delivery">При получении</label>
+            </div>
+
+            <div class="order-information-title">Дополнительно</div>
+            <input type="text" id='id_comment' name='comment' placeholder="Комментарий к заказу">
+            {% if form.comment.errors %}
+              <div class="field-errors">{{ form.comment.errors }}</div>
+            {% endif %}
+          </div>
+
+          <button class='order-button' type="submit">Оформить заказ</button>
+        </div>
+
+        <div class="order-items-container">
+          <div class="order-items-container__title">Ваш заказ</div>
+
+          <div class="order-items-container__products">
+            {% include "orders/includes/order_products.html" %}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock page %}

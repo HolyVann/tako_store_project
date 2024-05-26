@@ -1,0 +1,60 @@
+{% load static %}
+{% load favorites_tags %}
+
+{% user_favorites request as favorites %}
+
+<div class="modal-items__favorites">
+  {% for favorite in favorites  %}
+    <div class='cart-product'>
+      <a class="cart-product__img" href="{% url "catalog:product" favorite.product.slug %}">
+        <img src="{{ favorite.product.image.url }}">
+      </a>
+
+      <div class="cart-product-modal__description">
+        <div class="cart-product__characteristics">
+          <div class="cart-product__title-wrap">
+            <a href="{% url "catalog:product" favorite.product.slug %}" class="cart-product__title">{{ favorite.product.brand }} {{ favorite.product.name }}</a>
+          </div>
+        </div>
+
+        <div class="cart-product__info">
+          <div class="cart-product__feature">
+            <div class="cart-product__article">
+              Артикул: {{ favorite.product.article }}
+            </div>
+          </div>
+
+
+
+          <div class="cart-product__prices">
+            {% if favorite.product.discount %}
+              <div class="cart-product__price-wrap">
+                <div class="cart-product__old-price">{{ favorite.product.price }} BYN</div>
+
+                <div class="cart-product__discount">(-{{ favorite.product.discount }}%)</div>
+              </div>
+
+              <div class="cart-product__price">{{ favorite.product.sell_price }} BYN</div>
+            {% else %}
+              <div class="cart-product__price">{{ favorite.product.sell_price }} BYN</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-product__buttons">
+        <div class="cart-product__button-remove">
+          <a class="delete-product remove-from-favorites"
+            data-favorite-id='{{ favorite.id }}'
+            href="{% url 'favorite:favorite_remove' %}">
+            {% csrf_token %}
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

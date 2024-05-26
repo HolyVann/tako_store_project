@@ -1,0 +1,6 @@
+{% load goods_tags %}
+
+{% tag_categories as categories %}
+{% for category in categories %}
+<a href="{% url "catalog:index" category.slug %}">{{category.name}}</a>
+{% endfor %}

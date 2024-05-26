@@ -1,0 +1,147 @@
+{% extends "main/page.html" %}
+{% load static %}
+
+{% block modal_cart %}
+  {% include "carts/includes/modal_cart.html" %}
+{% endblock modal_cart %}
+
+{% block page %}
+  <div class="profile-container">
+    <div class="personal">
+      <div class="page-title">Личные данные</div>
+        <form action="{% url "user:profile" %}" method='post' enctype='multipart/form-data' class="profile-form">
+          {% csrf_token %}
+
+          {% if user.is_admin or user.is_staff %}
+              <a class="logout" href="{% url 'admin:index' %}">Админ панель</a>
+              <a href="{% url "user:logout" %}" class="admin">Выйти</a>
+          {% else %}
+
+          {% if user.image %}
+            <label for="id_image" class="not-img">
+              <img src="{{ user.image.url }}" alt="Аватар" title='Загрузить фото'>
+            </label>
+
+            <input type="file"
+                  id="id_image"
+                  accept="image/*"
+                  name='image'>
+          {% else %}
+            <label for="id_image" class="not-img">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
+                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+              </svg>
+
+              <span class="not-img_txt">Загрузите ваше фото</span>
+            </label>
+
+            <input type="file"
+              id="id_image"
+              accept="image/*"
+              name='image'>
+          {% endif %}
+
+          {% if form.image.errors %}
+            <div class="field-errors">
+              {{ form.image.errors }}
+            </div>
+          {% endif %}
+
+          <input type="text"
+                id="id_first_name"
+                name='first_name'
+                value='{{ form.first_name.value }}'
+                placeholder="Введите имя и фамилию" required>
+          {% if form.first_name.errors %}
+            <div class="field-errors">
+              {{ form.first_name.errors }}
+            </div>
+          {% endif %}
+
+          <input type="text"
+                id="id_username"
+                name='username'
+                value='{{ form.username.value }}'
+                placeholder="Введите имя пользователя" required>
+          {% if form.username.errors %}
+            <div class="field-errors">
+              {{ form.username.errors }}
+            </div>
+          {% endif %}
+
+          <input type="email"
+                id="id_email"
+                name='email'
+                value='{{ form.email.value }}'
+                placeholder="Введите email" required>
+          {% if form.email.errors %}
+            <div class="field-errors">
+              {{ form.email.errors }}
+            </div>
+          {% endif %}
+
+          <button type="submit">Сохранить</button>
+
+          <a href="{% url "user:logout" %}" class="logout">Выйти</a>
+          {% endif %}
+        </form>
+      </div>
+
+      {% comment %} {% if user.is_admin or user.is_staff %}
+      {% else %} {% endcomment %}
+        {% if orders %}
+        <div class="orders-container">
+          <div class="page-title">Ваши заказы</div>
+
+          {% for order in orders %}
+            <div class="order-container">
+              <div class="order-info">
+                <div>Заказ №{{ order.id }} - {{ order.created_timestamp }}</div>
+                <div>Статус заказа:
+                  <span class="status">{{ order.status }}</span>
+                </div>
+              </div>
+
+              <div class="order-info-container">
+                <div class="order-head">
+                  <div>Товар</div>
+
+                  <div>Количетсво</div>
+
+                  <div>Цена</div>
+
+                  <div>Общая стоимость</div>
+                </div>
+
+                {% for order_item in order.orderitem_set.all %}
+                  <div class="order-main">
+                    <div>
+                      <a href="{% url 'goods:product' order_item.product_variant.product.slug %}">
+                        {{ order_item.product_variant.product.brand.name}} {{ order_item.product_variant}}
+                      </a>
+                    </div>
+
+                    <div>{{ order_item.quantity }}</div>
+
+                    <div>{{ order_item.price }}</div>
+
+                    <div>{{ order_item.products_price }}</div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="orders">
+          <div class="orders-title">Заказы</div>
+
+          <div class="orders-catalog">Список заказов пока пуст.
+            <a href="{% url 'catalog:index' %}">Продолжить покупки.</a>
+          </div>
+        </div>
+      {% endif %}
+    {% comment %} {% endif %} {% endcomment %}
+  </div>
+{% endblock page %}
