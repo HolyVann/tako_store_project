@@ -30,64 +30,6 @@ def index(request):
       },
   ]
 
-  slides = [
-    {
-    "image": "deps/media/takostore_by_1709730567_3317782932217921366_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710240690_3322062149600190219_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710145404_3321262833419777972_9909468511 (1).jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1709730567_3317782932217921366_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710240690_3322062149600190219_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710145404_3321262833419777972_9909468511 (1).jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1709730567_3317782932217921366_9909468511.jpg",
-    },
-    {
-    "image": "deps/media/takostore_by_1709730567_3317782932217921366_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710240690_3322062149600190219_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710145404_3321262833419777972_9909468511 (1).jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1709730567_3317782932217921366_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710240690_3322062149600190219_9909468511.jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1710145404_3321262833419777972_9909468511 (1).jpg",
-    },
-
-    {
-    "image": "deps/media/takostore_by_1709730567_3317782932217921366_9909468511.jpg",
-    },
-
-  ]
-
   instagram = 'https://www.instagram.com/takostore_by/?hl=ru'
 
   return render(request, "main/index.html", locals())

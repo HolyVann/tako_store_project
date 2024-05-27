@@ -108,4 +108,4 @@ def cart(request):
   title = 'TAKO STORE - Корзина'
   page_title = 'Корзина'
 
-  return render(request, "users/cart.html", locals())
+  return render(request, "carts/cart.html", locals())
