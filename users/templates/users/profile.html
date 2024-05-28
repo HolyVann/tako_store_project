@@ -88,60 +88,57 @@
         </form>
       </div>
 
-      {% comment %} {% if user.is_admin or user.is_staff %}
-      {% else %} {% endcomment %}
-        {% if orders %}
-        <div class="orders-container">
-          <div class="page-title">Ваши заказы</div>
+      {% if orders %}
+      <div class="orders-container">
+        <div class="page-title">Ваши заказы</div>
 
-          {% for order in orders %}
-            <div class="order-container">
-              <div class="order-info">
-                <div>Заказ №{{ order.id }} - {{ order.created_timestamp }}</div>
-                <div>Статус заказа:
-                  <span class="status">{{ order.status }}</span>
-                </div>
-              </div>
-
-              <div class="order-info-container">
-                <div class="order-head">
-                  <div>Товар</div>
-
-                  <div>Количетсво</div>
-
-                  <div>Цена</div>
-
-                  <div>Общая стоимость</div>
-                </div>
-
-                {% for order_item in order.orderitem_set.all %}
-                  <div class="order-main">
-                    <div>
-                      <a href="{% url 'goods:product' order_item.product_variant.product.slug %}">
-                        {{ order_item.product_variant.product.brand.name}} {{ order_item.product_variant}}
-                      </a>
-                    </div>
-
-                    <div>{{ order_item.quantity }}</div>
-
-                    <div>{{ order_item.price }}</div>
-
-                    <div>{{ order_item.products_price }}</div>
-                  </div>
-                {% endfor %}
+        {% for order in orders %}
+          <div class="order-container">
+            <div class="order-info">
+              <div>Заказ №{{ order.id }} - {{ order.created_timestamp }}</div>
+              <div>Статус заказа:
+                <span class="status">{{ order.status }}</span>
               </div>
             </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="orders">
-          <div class="orders-title">Заказы</div>
 
-          <div class="orders-catalog">Список заказов пока пуст.
-            <a href="{% url 'catalog:index' %}">Продолжить покупки.</a>
+            <div class="order-info-container">
+              <div class="order-head">
+                <div>Товар</div>
+
+                <div>Количетсво</div>
+
+                <div>Цена</div>
+
+                <div>Общая стоимость</div>
+              </div>
+
+              {% for order_item in order.orderitem_set.all %}
+                <div class="order-main">
+                  <div>
+                    <a href="{% url 'goods:product' order_item.product_variant.product.slug %}">
+                      {{ order_item.product_variant.product.brand.name}} {{ order_item.product_variant}}
+                    </a>
+                  </div>
+
+                  <div>{{ order_item.quantity }}</div>
+
+                  <div>{{ order_item.price }}</div>
+
+                  <div>{{ order_item.products_price }}</div>
+                </div>
+              {% endfor %}
+            </div>
           </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="orders">
+        <div class="orders-title">Заказы</div>
+
+        <div class="orders-catalog">Список заказов пока пуст.
+          <a href="{% url 'catalog:index' %}">Продолжить покупки.</a>
         </div>
-      {% endif %}
-    {% comment %} {% endif %} {% endcomment %}
+      </div>
+    {% endif %}
   </div>
 {% endblock page %}

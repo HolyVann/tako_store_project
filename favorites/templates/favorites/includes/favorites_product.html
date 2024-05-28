@@ -31,10 +31,9 @@
               <div class="cart-product__price-wrap">
                 <div class="cart-product__old-price">{{ favorite.product.price }} BYN</div>
 
-                <div class="cart-product__discount">(-{{ favorite.product.discount }}%)</div>
+                <div class="cart-product__price">{{ favorite.product.sell_price }} BYN</div>
               </div>
 
-              <div class="cart-product__price">{{ favorite.product.sell_price }} BYN</div>
             {% else %}
               <div class="cart-product__price">{{ favorite.product.sell_price }} BYN</div>
             {% endif %}

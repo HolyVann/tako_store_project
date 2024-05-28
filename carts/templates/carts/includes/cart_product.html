@@ -31,6 +31,19 @@
             </div>
 
             <div class="cart-product__quantity-price">
+              <div class="cart-product__prices">
+                {% if cart.product_variant.product.discount %}
+                  <div class="cart-product__price-wrap">
+                    <div class="cart-product__old-price">{{ cart.products_price }} BYN</div>
+
+                    <div class="cart-product__price">{{ cart.products_sell_price }} BYN</div>
+                  </div>
+
+                {% else %}
+                  <div class="cart-product__price">{{ cart.products_price }} BYN</div>
+                {% endif %}
+              </div>
+
               <div class="cart-product__quantity">
                 <button class="decrease-quantity"
                         data-cart-id='{{ cart.id }}'
@@ -49,20 +62,6 @@
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
                   </svg>
                 </button>
-              </div>
-
-              <div class="cart-product__prices">
-                {% if cart.product_variant.product.discount %}
-                  <div class="cart-product__price-wrap">
-                    <div class="cart-product__old-price">{{ cart.products_price }} BYN</div>
-
-                    <div class="cart-product__discount">(-{{ cart.product_variant.product.discount }}%)</div>
-                  </div>
-
-                  <div class="cart-product__price">{{ cart.products_sell_price }} BYN</div>
-                {% else %}
-                  <div class="cart-product__price">{{ cart.products_price }} BYN</div>
-                {% endif %}
               </div>
             </div>
           </div>

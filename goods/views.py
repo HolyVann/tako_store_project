@@ -18,7 +18,7 @@ def catalog(request, category_slug="all"):
         goods = q_search(query)
     elif category_slug:
         if category_slug == 'all':
-            goods = Products.objects.all()
+            goods = Products.objects.all().order_by('-is_new')
         elif category_slug:
             goods = Products.objects.filter(category__slug=category_slug)
     else:
@@ -47,7 +47,7 @@ def new(request, category_slug="all"):
 
     if category_slug:
         if category_slug == 'all':
-            goods = Products.objects.filter(is_new=True)
+            goods = Products.objects.filter(is_new=True).order_by('-is_new')
         else:
             goods = Products.objects.filter(category__slug=category_slug).filter(is_new=True)
     else:

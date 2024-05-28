@@ -15,6 +15,7 @@ class CartQueryset(models.QuerySet):
     return 0
 
 
+
 class Cart(models.Model):
 
   user = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True, null=True, verbose_name='Пользователь')

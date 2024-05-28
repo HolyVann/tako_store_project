@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load static %}
 
 {% block modal_cart %}
@@ -6,67 +7,43 @@
 {% endblock modal_cart %}
 
 {% block content %}
-<div class="main-block">
-  {% include "main/includes/main_gallery.html" %}
+  <div class="main-block">
+    {% include "main/includes/main_gallery.html" %}
 
-  <div class="cards-container-center">
-    {% for block in content %}
-      <div class="main-block">
-        <div class="main-block__top">
-          <div class="main-block__title">{{ block.title }}</div>
-        </div>
+    <div class="cards-container-center">
+      {% for block in content %}
+        <div class="main-block">
+          <div class="main-block__top">
+            <div class="main-block__title">{{ block.title }}</div>
+          </div>
 
-        <div class="main-block__content">
-          <div class="items">
-            {% if block.title == 'Новинки' %}
-            {% for product in new %}
-            {% include "goods/includes/cards.html" %}
-            {% endfor %}
+          <div class="main-block__content">
+            <div class="items">
+              {% if block.title == 'Новинки' %}
+                {% for product in new %}
+                  {% include "goods/includes/cards.html" %}
+                {% endfor %}
 
-            {% elif block.title == 'Sale' %}
-            {% for product in sale_goods %}
-            {% include "goods/includes/cards.html" %}
-            {% endfor %}
+              {% elif block.title == 'Sale' %}
+                {% for product in sale_goods %}
+                  {% include "goods/includes/cards.html" %}
+                {% endfor %}
 
-            {% else %}
-            {% for product in goods %}
-            {% include "goods/includes/cards.html" %}
-            {% endfor %}
-            {% endif%}
+              {% else %}
+                {% for product in goods %}
+                  {% include "goods/includes/cards.html" %}
+                {% endfor %}
+              {% endif%}
+            </div>
+          </div>
+
+          <div class="main-block__bottom">
+            <div class="main-block__link">
+              <a href="{% url block.url %}"> Смотреть все </a>
+            </div>
           </div>
         </div>
-
-        <div class="main-block__bottom">
-          <div class="main-block__link">
-            <a href="{% url block.url %}"> Смотреть все </a>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-
-  <!-- <div class="slider">
-    <div class="slider-title">
-      FIND US ON INSTAGRAM
-      <a href="{{ instagram }}" target="_blank">@takostore_by</a>
-    </div>
-
-    <div class="slide-track">
-      {% for slide in slides %}
-      <div class="slide">
-        <img src="{% static  slide.image %}" />
-      </div>
       {% endfor %}
-    </div>=
-  </div> -->
-
-  <div class="map">
-    <script
-      type="text/javascript"
-      charset="utf-8"
-      async
-      src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac6f43ca6881dba6203e8a3bda95959d4c48f75abcaba1a5f27e6d69d4a596d95&amp;width=700&amp;height=350&amp;lang=ru_RU&amp;scroll=true">
-    </script>
+    </div>
   </div>
-</div>
 {% endblock content %}

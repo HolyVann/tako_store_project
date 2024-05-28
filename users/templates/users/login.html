@@ -40,13 +40,13 @@
           {{ form.non_field_errors }}
         </div>
       {% endif %}
-      <a href="" class="password">Забыли пароль?</a>
+      <!-- <a href="" class="password">Забыли пароль?</a> -->
 
       <button type="submit">Войти</button>
 
       <a href="{% url "user:registration" %}" class="registrations-link">Создать аккаунт</a>
 
-      {% include "users/includes/social_login_links.html" %}
+      <!-- {% include "users/includes/social_login_links.html" %} -->
     </form>
   </div>
 {% endblock page %}
