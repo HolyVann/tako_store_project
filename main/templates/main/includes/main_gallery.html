@@ -1,6 +1,14 @@
 {% load static %}
 
 <div class="main-gallery__container">
+  <div class="second-gallery-block">
+    <a href="{% url 'catalog:index' "dzhinsy" %}">
+      <div class="title-second-gallery">Джинсы</div>
+
+      <img src="{% static "deps\media\i.webp" %}" alt="">
+    </a>
+  </div>
+
   <div class="first-gallery-block">
     <a href="{% url 'catalog:new' %}">
       <div class="title-first-gallery">Новинки</div>
@@ -15,13 +23,6 @@
     </a>
   </div>
 
-  <div class="second-gallery-block">
-    <a href="{% url 'catalog:index' "dzhinsy" %}">
-      <div class="title-second-gallery">Джинсы</div>
-
-      <img src="{% static "deps\media\JEANs.jpg" %}" alt="">
-    </a>
-  </div>
 
   <div class="third-gallery-block">
     <a href="{% url 'catalog:index' "bryuki" %}">

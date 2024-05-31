@@ -1,14 +1,13 @@
 #cartBtn {
   border: none;
   background: none;
-  color: #000;
   cursor: pointer;
   position: relative;
 }
 
 #cartBtn:hover {
   transition: all .4s;
-  color: rgb(225, 0, 249);
+  color: rgb(225, 0, 249) !important;
 }
 
 .cart__place-order:hover {

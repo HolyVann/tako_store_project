@@ -1,17 +1,3 @@
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("navbar").style.boxShadow = "0px 0px 2px #A8A8AE";
-    document.getElementById("nav-container__down").style.top = "-80px";
-    document.getElementById("dropdown").style.visibility = "visible";
-  } else {
-    document.getElementById("navbar").style.boxShadow = "0px 0px 0px";
-    document.getElementById("nav-container__down").style.top = "0";
-    document.getElementById("dropdown").style.visibility = "hidden";
-  }
-}
-
 const btnUp = {
   el: document.querySelector('.btn-up'),
   scrolling: false,

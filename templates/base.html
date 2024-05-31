@@ -16,6 +16,8 @@
   <link rel="stylesheet" href={% static "deps/styles/favorites.css" %} >
   <link rel="stylesheet" href={% static "deps/styles/modal.css" %} >
   <link rel="stylesheet" href={% static "deps/styles/orders.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/main_header.css" %} >
+  <link rel="stylesheet" href={% static "deps/styles/nav_modal_links.css" %} >
   <!-- <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css"> -->
   <link rel="apple-touch-icon" sizes="180x180" href={% static "deps/favicon/apple-touch-icon.png" %}>
   <link rel="icon" type="image/png" sizes="32x32" href={% static "deps/favicon/favicon-32x32.png"%}>
@@ -30,13 +32,12 @@
 
   {% block modal_cart %}{% endblock modal_cart %}
 
-  {% include 'includes/header.html' %}
+  {% block header %}{% endblock header %}
 
   {% include "includes/notifications.html" %}
 
   <main>
-
-    <div class="white"></div>
+    {% block white %}{% endblock white %}
 
     {% block content %}{% endblock content %}
   </main>
@@ -63,5 +64,7 @@
   <script src={% static "deps/js/dropdown_filter.js" %}></script>
   <script src={% static "deps/js/modals.js" %}></script>
   <script src={% static "deps/js/bootstrap/bootstrap.bundle.min.js" %}></script>
+  <script src={% static "deps/js/nav_modal_links.js" %}></script>
+  {% block script %}{% endblock script %}
 </body>
 </html>

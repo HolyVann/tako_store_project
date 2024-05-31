@@ -1,14 +1,13 @@
 #favoritesBtn {
   border: none;
   background: none;
-  color: #000;
   cursor: pointer;
   position: relative;
 }
 
 #favoritesBtn:hover {
   transition: all .4s;
-  color: rgb(225, 0, 249);
+  color: rgb(225, 0, 249) !important;
 }
 
 .favorites__add-cart{

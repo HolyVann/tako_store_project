@@ -2,6 +2,11 @@
 {% load static %}
 {% load goods_tags %}
 
+{% block header %}
+{% include 'includes/header.html' %}
+{% endblock header %}
+
+{% block white %}{% include "includes/white_block.html" %}{% endblock white %}
 
 {% block modal_cart %}
   {% include "carts/includes/modal_cart.html" %}
@@ -125,3 +130,7 @@
 </div>
 
 {% endblock content %}
+
+{% block script %}
+  <script src={% static "deps/js/navbar.js" %}></script>
+{% endblock script %}

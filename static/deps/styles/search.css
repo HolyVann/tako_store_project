@@ -1,12 +1,11 @@
 #myBtn {
   border: none;
   background: none;
-  color: #000;
   cursor: pointer;
 }
 
 #myBtn:hover {
-  color: rgb(225, 0, 249);
+  color: rgb(225, 0, 249) !important;
   transition: all .4s;
 }
 

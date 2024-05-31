@@ -3,6 +3,11 @@
 {% load carts_tags %}
 {% user_carts request as carts %}
 
+{% block header %}
+{% include 'includes/header.html' %}
+{% endblock header %}
+
+{% block white %}{% include "includes/white_block.html" %}{% endblock white %}
 
 {% block content %}
 <div class="page-block">
@@ -15,3 +20,7 @@
   <div class="page-content">{% block page %}{% endblock page %}</div>
 </div>
 {% endblock content %}
+
+{% block script %}
+  <script src={% static "deps/js/navbar.js" %}></script>
+{% endblock script %}
