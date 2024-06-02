@@ -316,7 +316,7 @@ footer {
 
 .btn-up {
   position: fixed;
-  background-color: rgb(225, 0, 249);
+  background-color: rgba(225, 0, 249, .8);
   right: 25px;
   bottom: 60px;
   border-radius: 25px;
@@ -346,12 +346,6 @@ footer {
   width: 40px;
   height: 40px;
   fill: currentcolor;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .btn-up:hover {
-    opacity: .8;
-  }
 }
 
 
@@ -598,7 +592,7 @@ footer {
   border-right: solid #e9e9ef 1px;
   width: 300px;
   padding-left: 25px;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   animation-name: animate;
   animation-duration: 0.4s;
@@ -771,13 +765,6 @@ footer {
   color:rgb(225, 0, 249);
 }
 
-.drop-catalog:hover .categories-list>a:after {
-  color:rgb(225, 0, 249);
-  width: 100%;
-  opacity: .9;
-}
-
-
 .categories-list {
   display: flex;
   flex-direction: row;
@@ -832,7 +819,7 @@ footer {
   background-color: #fff;
   width: 300px;
   padding-left: 25px;
-  height: 100vh;
+  height: 100%;
   top: 0px;
   padding-top: 76px;
 }

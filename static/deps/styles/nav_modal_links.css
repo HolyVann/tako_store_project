@@ -28,6 +28,7 @@
   color: #aaa;
   font-size: 54px;
   padding-top: 13px;
+  width: min-content;
 }
 
 .close-nav:hover,
