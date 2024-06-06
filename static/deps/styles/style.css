@@ -86,7 +86,7 @@ footer {
   display: flex;
   flex-direction: column;
   font-family: "Roboto-Light";
-  gap: 85px 0px;
+  gap: 50px 0px;
   padding-bottom: 0px;
   padding: 40px 250px;
 }
@@ -604,6 +604,11 @@ footer {
   to {left: 0; opacity: 1}
 }
 
+@keyframes hidden-dropdown {
+  from {left: 0px; opacity: 1}
+  to {left: -300px; opacity: 0}
+}
+
 
 .dropdown-content__block {
   height: 100vh;
@@ -944,8 +949,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 53px;
-  height: 53px;
+  width: 54px;
+  height: 54px;
   background: #000;
   color: #fff;
   border: solid #000 1px;

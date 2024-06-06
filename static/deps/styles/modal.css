@@ -25,7 +25,7 @@
   position: relative;
   background-color: #fff;
   width: 700px;
-  box-shadow: 0 0 15px 0px #e5e5e5;
+  /* box-shadow: 0 0 15px 0px #e5e5e5; */
   animation-name: animatetop;
   animation-duration: 0.4s
 }

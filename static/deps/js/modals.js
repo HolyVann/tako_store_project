@@ -10,11 +10,13 @@ var span = document.getElementsByClassName("modal__favorites-close")[0];
 // When the user clicks on the button, open the modal
 favoritesBtn.onclick = function() {
   favoritesModal.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   favoritesModal.style.display = "none";
+  document.body.style.overflow = "";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -64,11 +66,13 @@ var span = document.getElementsByClassName("modal__cart-close")[0];
 // When the user clicks on the button, open the modal
 cartBtn.onclick = function() {
   cartModal.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   cartModal.style.display = "none";
+  document.body.style.overflow = "";
 }
 
 // When the user clicks anywhere outside of the modal, close it
