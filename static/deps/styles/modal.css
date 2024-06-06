@@ -25,7 +25,6 @@
   position: relative;
   background-color: #fff;
   width: 700px;
-  /* box-shadow: 0 0 15px 0px #e5e5e5; */
   animation-name: animatetop;
   animation-duration: 0.4s
 }
@@ -54,8 +53,8 @@
 }
 
 .modal__cart-close>span, .modal__favorites-close>span {
-  color: #aaa;
-  font-size: 45px;
+  color: #000;
+  font-size: 54px;
   padding-right: 25px;
 }
 

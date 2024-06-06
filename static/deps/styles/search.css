@@ -57,17 +57,24 @@
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100px; /* Full height */
+  height: 80px; /* Full height */
   background-color: #fff; /* Fallback color */
-  padding: 0px 100px;
+  padding: 0px 25px;
+  animation-name: animate;
+  animation-duration: .5s
 }
 
 /* Modal Content/Box */
 .search-content {
   display: flex;
-  height: 100px;
+  height: 80px;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes animate {
+  from {top: -100px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
 
 .search-content>* {
@@ -76,9 +83,8 @@
 
 /* The Close Button */
 .close>span {
-  color: #aaa;
-  font-size: 45px;
-  padding-bottom: 10px;
+  color: #000;
+  font-size: 54px;
 }
 
 .close {

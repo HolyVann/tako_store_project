@@ -594,19 +594,14 @@ footer {
   padding-left: 25px;
   height: 100%;
   flex-direction: column;
-  animation-name: animate;
+  animation-name: show-dropdown;
   animation-duration: 0.4s;
   position: relative;
 }
 
-@keyframes animate {
+@keyframes show-dropdown {
   from {left: -300px; opacity: 0}
   to {left: 0; opacity: 1}
-}
-
-@keyframes hidden-dropdown {
-  from {left: 0px; opacity: 1}
-  to {left: -300px; opacity: 0}
 }
 
 
