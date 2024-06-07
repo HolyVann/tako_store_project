@@ -24,7 +24,7 @@
 - Change directory to tako_store:
 
 ```
-cd tako_store
+cd tako_store_project
 ```
 
 - Create virtual environment:
