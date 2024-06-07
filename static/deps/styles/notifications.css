@@ -33,7 +33,14 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 350px;
-  color: #fff
+  color: #fff;
+  animation-name: animate-massage;
+  animation-duration: 0.4s
+}
+
+@keyframes animate-massage {
+  from {right: -300px; opacity: 0}
+  to {right: 30px; opacity: 1}
 }
 
 

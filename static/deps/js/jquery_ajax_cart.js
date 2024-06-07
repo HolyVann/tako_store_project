@@ -3,6 +3,15 @@ $(document).ready(function () {
     // берем в переменную элемент разметки с id jq-notification для оповещений от ajax
     var successMessage = $("#jq-notification");
 
+    $(document).on("click", "#increase", function  (){
+        successMessage.html("Недостаточно товара");
+        successMessage.fadeIn(400);
+        // // Через 7сек убираем сообщение
+        setTimeout(function () {
+            successMessage.fadeOut(400);
+        }, 5000);
+    });
+
     // Ловим собыитие клика по кнопке добавить в корзину
     $(document).on("click", ".add-to-cart-ajax", function (e) {
         // Блокируем его базовое действие

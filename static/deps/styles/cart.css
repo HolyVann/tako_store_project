@@ -80,6 +80,19 @@
   color: #000;
 }
 
+.cart-product__quantity button.increase-quantity__disabled {
+  opacity: .2;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+.cart-product__quantity button.increase-quantity__disabled:hover {
+  color: #000;
+}
+
 .cart-product__quantity:first-child {
   border-right: solid .1px #e9e9ef;
 }
