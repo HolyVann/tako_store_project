@@ -7,15 +7,15 @@
 {% endblock modal_cart %}
 
 {% block page %}
-<div class="page-items">
-  <div class="brands-page">
-    <div class="brands-container">
-      {% for brand in brands %}
-        <a href='{% url "catalog:brand" brand.slug %}' class="brand-link">
-          <div>{{ brand }}</div>
-        </a>
-      {% endfor %}
+  <div class="page-items">
+    <div class="brands-page">
+      <div class="brands-container">
+        {% for brand in brands %}
+          <a href='{% url "catalog:brand" brand.slug %}' class="brand-link">
+            <div>{{ brand }}</div>
+          </a>
+        {% endfor %}
+      </div>
     </div>
   </div>
-</div>
 {% endblock page %}

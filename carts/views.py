@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect
 from carts.models import Cart
 from goods.models import Products, Variants
+from users.models import User
 from django.template.loader import render_to_string
 from carts.utils import get_user_carts
 
@@ -155,6 +156,24 @@ def cart_remove(request):
         "message": "Товар удален из корзины",
         "cart_items_html": cart_items_html,
         "quantity_deleted": quantity,
+    }
+
+    return JsonResponse(response_data)
+
+
+def cart_clear_modal(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user.username)
+    else:
+        user = User.objects.get(session_key=request.session.session_key)
+
+    user_products = user.cart_set.all()
+    user_products.delete()
+
+    cart_items_html = render_to_string("carts/includes/modal_cart_empty.html")
+
+    response_data = {
+        "cart_items_html": cart_items_html,
     }
 
     return JsonResponse(response_data)

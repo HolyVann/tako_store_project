@@ -324,3 +324,13 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.cart-clear {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.cart-clear:hover {
+  transition: all .4s;
+  color: rgb(225, 0, 249);
+}

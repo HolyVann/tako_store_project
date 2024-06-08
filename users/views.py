@@ -90,6 +90,8 @@ def profile(request):
     ).order_by('-id')
   )
 
+  page_title = 'Профиль'
+
   title = 'TAKO STORE - Профиль'
 
   return render(request, 'users/profile.html', locals())

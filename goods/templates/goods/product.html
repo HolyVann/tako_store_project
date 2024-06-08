@@ -14,6 +14,20 @@
 
 {% block content %}
 <div class="page-block">
+  <nav class="breadcrumbs-container">
+    <div class="breadcrumbs-item">
+        <a href="/" class="breadcrumbs-item__link">Главная</a>
+    </div>
+
+      <div class="breadcrumbs-item">
+        <a href="{% url 'catalog:index' product.category.slug %}" class="breadcrumbs-item__link">{{product.category.name}}</a>
+      </div>
+
+      <div class="breadcrumbs-item">
+        <div class="breadcrumbs-item">{{product.name}} {{product.brand.name}}</div>
+      </div>
+  </nav>
+
   <div class="product-content">
     <div class="product-page__left">
       <div class="product-page__slider">

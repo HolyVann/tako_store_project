@@ -8,7 +8,7 @@ from favorites.models import Favorites
 
 
 
-def catalog(request, category_slug="all"):
+def catalog(request, category_slug=None):
 
     order_by = request.GET.get('order_by', None)
     page = request.GET.get('page', 1)
@@ -19,10 +19,13 @@ def catalog(request, category_slug="all"):
     elif category_slug:
         if category_slug == 'all':
             goods = Products.objects.all().order_by('-is_new')
-        elif category_slug:
+            page_title = 'Вся одежда'
+        else:
             goods = Products.objects.filter(category__slug=category_slug)
+            page_title = goods[0].category.name
     else:
-        goods = Products.objects.all()
+        goods = Products.objects.all().order_by('-is_new')
+        page_title = 'Каталог'
 
 
     if order_by and order_by != 'default':
@@ -35,7 +38,7 @@ def catalog(request, category_slug="all"):
         'title': "TAKO STORE - Каталог",
         'goods': current_page,
         'slug_url': category_slug,
-        'page_title': 'Каталог',
+        'page_title': page_title,
     }
 
     return render(request, "goods/catalog.html", context)
@@ -179,6 +182,6 @@ def brands(request, brand_slug=None):
         brands = Brands.objects.all()
 
         title = f"TAKO STORE - Все бренды"
-        page_title = 'Все бреды'
+        page_title = 'Все бренды'
 
         return render(request, 'goods/all_brands.html', locals())

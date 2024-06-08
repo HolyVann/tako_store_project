@@ -11,4 +11,5 @@ urlpatterns = [
     path('cart-remove-modal/', views.cart_remove_modal, name='cart_remove_modal'),
     path('cart-change/', views.cart_change, name='cart_change'),
     path('cart-remove/', views.cart_remove, name='cart_remove'),
+    path('cart-clear-modal/', views.cart_clear_modal, name='cart_clear_modal'),
 ]

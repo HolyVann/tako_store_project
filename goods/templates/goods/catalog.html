@@ -31,6 +31,26 @@
     </div>
   {% else %}
 
+    <nav class="breadcrumbs-container">
+      <div class="breadcrumbs-item">
+          <a href="/" class="breadcrumbs-item__link">Главная</a>
+      </div>
+
+      {% if request.get_full_path == '/catalog/' %}
+        <div class="breadcrumbs-item">
+          Каталог
+        </div>
+      {% else %}
+        <div class="breadcrumbs-item">
+          <a href="{% url 'catalog:index' %}" class="breadcrumbs-item__link">Каталог</a>
+        </div>
+
+        <div class="breadcrumbs-item">
+          {{ page_title }}
+        </div>
+      {% endif %}
+    </nav>
+
     <div class="page-items">
       <div class="filter-wrap">
         <div class="dropdown-filter">

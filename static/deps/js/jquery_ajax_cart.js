@@ -91,14 +91,6 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
             },
             success: function (data) {
-                // Сообщение
-                // successMessage.html(data.message);
-                // successMessage.fadeIn(400);
-                // // Через 7сек убираем сообщение
-                // setTimeout(function () {
-                //     successMessage.fadeOut(400);
-                // }, 5000);
-
                 // Уменьшаем количество товаров в корзине (отрисовка)
                 cartCount -= data.quantity_deleted;
                 goodsInCartCount.text(cartCount);
@@ -111,6 +103,41 @@ $(document).ready(function () {
                 var cartItemsContainer = $("#cart-items-container");
                 cartItemsContainer.html(data.cart_items_html);
 
+            },
+
+            error: function (data) {
+                console.log("Ошибка при добавлении товара в корзину");
+            },
+        });
+    });
+
+
+     // Ловим собыитие клика по кнопке удалить товар из корзины
+     $(document).on("click", ".cart-clear", function (e) {
+        // Блокируем его базовое действие
+        e.preventDefault();
+
+        // Из атрибута href берем ссылку на контроллер django
+        var cartClear = $(this).data("url");
+
+        // делаем post запрос через ajax не перезагружая страницу
+        $.ajax({
+            type: "POST",
+            url: cartClear,
+            data: {
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Уменьшаем количество товаров в корзине (отрисовка)
+                cartCount = 0;
+
+                if (cartCount==0) {
+                    $("#goods-in-cart-counter").hide();
+                }
+
+                // Меняем содержимое корзины на ответ от django (новый отрисованный фрагмент разметки корзины)
+                var cartItemsContainer = $("#cart-items-container");
+                cartItemsContainer.html(data.cart_items_html);
             },
 
             error: function (data) {

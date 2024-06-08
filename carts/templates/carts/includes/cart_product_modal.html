@@ -4,6 +4,10 @@
 {% user_carts request as carts %}
 
 <div class="modal-items__cart">
+  <div data-url="{% url 'cart:cart_clear_modal' %}" class="cart-clear">
+    {% csrf_token %}
+    Очистить корзину
+  </div>
   {% for cart in carts  %}
     <div class='cart-product'>
       <a class="cart-product__img" href="{% url "catalog:product" cart.product_variant.product.slug %}">
@@ -118,6 +122,7 @@
   <div class="cart-total">
     <div class="cart-total__items">
       <span>Всего товаров {{ carts.total_quantity }}:</span>
+
       <span>{{ carts.total_price }} BYN</span>
     </div>
 

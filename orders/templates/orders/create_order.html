@@ -6,18 +6,19 @@
 
 {% block page %}
   <div class="order-page">
-    <div class="back-to-cart">
-      <a href="{% url 'user:cart' %}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-        </svg>
-        В корзину</a>
-    </div>
     <div class="create-order-container">
       <form class="order-form" action="{% url "orders:checkout" %}" method="post">
         {% csrf_token %}
-
+        
         <div class="order-information-container">
+          <div class="back-to-cart">
+            <a href="{% url 'user:cart' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+              </svg>
+              В корзину</a>
+          </div>
+
           <div class="order-information-form">
             <div class="order-information-title">Ваши данные</div>
             <input type="text" placeholder="Имя" id="id_first_name"

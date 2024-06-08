@@ -54,7 +54,7 @@ def checkout(request):
 
             messages.success(request, f'Заказ оформлен!')
 
-            return redirect('user:profile')
+            return redirect('main:index')
       except ValidationError as e:
         messages.success(request, ''.join(e))
         return redirect('orders:checkout')

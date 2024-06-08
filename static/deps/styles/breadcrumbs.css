@@ -1,0 +1,28 @@
+.breadcrumbs-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 15px;
+    font-family: 'Roboto-Light';
+    padding-bottom: 30px;
+}
+
+.breadcrumbs-item:not(:last-of-type)::after {
+    content: '/';
+    padding-left: 15px;
+}
+
+.breadcrumbs-item {
+    color: #000;
+}
+
+.breadcrumbs-item__link {
+    color: #000;
+    text-decoration: none;
+    opacity: .7;
+}
+
+.breadcrumbs-item__link:hover {
+    transition: all .4s;
+    color: rgb(225, 0, 249);
+}
