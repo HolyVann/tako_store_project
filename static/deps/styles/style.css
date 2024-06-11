@@ -29,9 +29,14 @@ body {
 }
 
 footer {
-  margin-top: 80px;
-  margin-bottom: 20px;
-  border-top: solid 1px #e9e9ef;
+  margin-top: 150px;
+  padding-bottom: 20px;
+  color: #fff;
+  background-color: #000;
+}
+
+main {
+  min-height: 650px;
 }
 
 #favoriteBtn {
@@ -213,11 +218,12 @@ footer {
 .footer-conteiner__up-left>* {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 .footer-conteiner__up-left>*>* {
   text-decoration: none;
-  color: #000;
+  color: #fff;
   position: relative;
   width: max-content;
 }
@@ -231,7 +237,7 @@ footer {
   display: block;
   width: 0;
   height: .1px;
-  background: #000;
+  background: #fff;
   transition: .3s;
 }
 
@@ -254,7 +260,7 @@ footer {
 }
 
 .footer-contact__social>a {
-  color: #000;
+  color: #fff;
   opacity: .7;
 }
 
@@ -263,15 +269,17 @@ footer {
   transition: all .4s;
 }
 
+.footer-contact__phone {
+  font-size: 20px;
+  display: flex;
+  gap: 5px;
+}
+
 .footer-conteiner__up {
   display: flex;
   justify-content: flex-end;
   gap: 100px;
   font-size: 15px;
-}
-
-.footer-conteiner__up>*>* {
-  gap: 15px;
 }
 
 .author {
@@ -824,6 +832,10 @@ footer {
   padding-top: 76px;
 }
 
+.drop-catalog__content:hover {
+  display: flex;
+}
+
 .drop-catalog__content a {
   color: #000;
   text-decoration: none;
@@ -1014,7 +1026,7 @@ footer {
 .product-content{
   display: flex;
   font-family: 'Roboto-Light';
-  gap: 70px;
+  gap: 100px;
   margin-bottom: 100px;
 }
 
@@ -1052,6 +1064,10 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.product-page__main > .breadcrumbs-container {
+  padding: 0;
 }
 
 .product-page__left {
@@ -1128,22 +1144,14 @@ footer {
   font-size: 15px;
 }
 
-
-.brands-page {
-  display: flex;
-  justify-content: center;
-}
-
 .brands-container {
   display: grid;
-  grid-template-columns: repeat(4, 250px);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  align-items: center;
 }
 
 .brand-link {
-  width: 250px;
-  height: 180px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1239,7 +1247,7 @@ footer {
 
 .title-first-gallery {
   position: absolute;
-  font-size: 50px;
+  font-size: 60px;
   color:#fff;
   top: 10%;
   left: 5%;

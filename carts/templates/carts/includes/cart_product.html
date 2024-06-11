@@ -4,6 +4,15 @@
 
 {% if carts %}
   <div class="items__cart">
+    {% if carts|length > 1 %}
+      <div class="cart-clear">
+        <span data-url="{% url 'cart:cart_clear_modal' %}" id="cartClear">
+          Очистить корзину
+          {% csrf_token %}
+        </span>
+      </div>
+    {% endif %}
+
     {% for cart in carts  %}
       <div class='cart-product'>
         <a class="cart-product__img" href="{% url "catalog:product" cart.product_variant.product.slug %}">
@@ -115,7 +124,15 @@
   <div class="cart-info">
     <div class="cart-total">
       <div class="cart-total__items">
-        <span>Всего товаров {{ carts.total_quantity }}:</span>
+        {% if carts.total_quantity > 4 and carts.total_quantity < 21 or carts.total_quantity|get_digit:"1" == 0 %}
+          <span>{{ carts.total_quantity }} товаров:</span>
+        {% elif carts.total_quantity|get_digit:"1" == 1 %}
+          <span>{{ carts.total_quantity }} товар:</span>
+        {% elif carts.total_quantity|get_digit:"1" < 5 %}
+          <span>{{ carts.total_quantity }} товара:</span>
+        {% elif carts.total_quantity|get_digit:"1" > 4 %}
+          <span>{{ carts.total_quantity }} товаров:</span>
+        {% endif %}
         <span>{{ carts.total_price }} BYN</span>
       </div>
 

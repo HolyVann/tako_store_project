@@ -144,20 +144,6 @@ def product(request, product_slug, size_slug=None):
 
     product_variants = product.variants.all()
 
-    # if request.user.is_authenticated:
-
-    #     user_cart = Cart.objects.filter(user=request.user, product_variant=product_variant)
-
-    #     if user_cart:
-    #         product_in_cart = True
-
-    # else:
-
-    #     user_cart = Cart.objects.filter(session_key=request.session.session_key, product_variant=product_variant)
-
-    #     if user_cart:
-    #         product_in_cart = True
-
     title = f"TAKO STORE - {product.name}, {product.article}"
 
     images = Gallery.objects.filter(product__slug=product_slug)
@@ -168,8 +154,14 @@ def product(request, product_slug, size_slug=None):
 def brands(request, brand_slug=None):
 
     if brand_slug:
+        order_by = request.GET.get('order_by', None)
 
         goods = Products.objects.filter(brand__slug=brand_slug)
+
+        if order_by and order_by != 'default':
+            goods = goods.order_by(order_by)
+
+        slug_url = brand_slug
 
         brand_name =  goods[0].brand.name
 
@@ -178,7 +170,6 @@ def brands(request, brand_slug=None):
 
         return render(request, 'goods/brand_catalog.html', locals())
     else:
-
         brands = Brands.objects.all()
 
         title = f"TAKO STORE - Все бренды"

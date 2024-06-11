@@ -37,7 +37,15 @@
 <div class="order-items__footer">
   <div class="order__total">
     <div class="delivery">
-      <span>Всего товаров {{ carts.total_quantity }}:</span>
+      {% if carts.total_quantity > 4 and carts.total_quantity < 21 or carts.total_quantity|get_digit:"1" == 0 %}
+        <span>{{ carts.total_quantity }} товаров:</span>
+      {% elif carts.total_quantity|get_digit:"1" == 1 %}
+        <span>{{ carts.total_quantity }} товар:</span>
+      {% elif carts.total_quantity|get_digit:"1" < 5 %}
+        <span>{{ carts.total_quantity }} товара:</span>
+      {% elif carts.total_quantity|get_digit:"1" > 4 %}
+        <span>{{ carts.total_quantity }} товаров:</span>
+      {% endif %}
       <span>{{ carts.total_price }} BYN</span>
     </div>
 

@@ -164,16 +164,20 @@ def cart_remove(request):
 def cart_clear_modal(request):
     if request.user.is_authenticated:
         user = User.objects.get(username=request.user.username)
-    else:
-        user = User.objects.get(session_key=request.session.session_key)
 
-    user_products = user.cart_set.all()
-    user_products.delete()
+        user_products = user.cart_set.all()
+        user_products.delete()
+    else:
+        user_cart = Cart.objects.filter(session_key=request.session.session_key)
+        user_cart.delete()
 
     cart_items_html = render_to_string("carts/includes/modal_cart_empty.html")
 
+    quantity = 0
+
     response_data = {
         "cart_items_html": cart_items_html,
+        "quantity": quantity,
     }
 
     return JsonResponse(response_data)

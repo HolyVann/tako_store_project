@@ -1,6 +1,6 @@
 .order-form {
   display: flex;
-  gap: 50px;
+  gap: 100px;
 }
 
 .create-order-container {
@@ -24,7 +24,7 @@
 }
 
 .order-information-container {
-  min-width: 500px;
+  min-width: 600px;
 }
 
 .order-items-container__products {
@@ -46,7 +46,11 @@
 }
 
 .order-items-container__title, .order-information-title {
-  font-size: 25px;
+  font-size: 30px;
+}
+
+.order-information-form .order-information-title:not(:first-child) {
+  margin-top: 20px;
 }
 
 .order-items-container__title {
@@ -215,7 +219,7 @@
 
 .back-to-cart {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .back-to-cart a {

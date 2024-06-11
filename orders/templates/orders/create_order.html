@@ -9,7 +9,7 @@
     <div class="create-order-container">
       <form class="order-form" action="{% url "orders:checkout" %}" method="post">
         {% csrf_token %}
-        
+
         <div class="order-information-container">
           <div class="back-to-cart">
             <a href="{% url 'user:cart' %}">
@@ -20,7 +20,7 @@
           </div>
 
           <div class="order-information-form">
-            <div class="order-information-title">Ваши данные</div>
+            <div class="order-information-title">Получатель</div>
             <input type="text" placeholder="Имя" id="id_first_name"
                   value='{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}'
                   name="first_name" required>
@@ -28,7 +28,6 @@
               <div class="field-errors">{{ form.first_name.errors }}</div>
             {% endif %}
 
-            <div class="order-information-title">Контакты</div>
             <input type="email" name="email" id="id_email" placeholder="Email"
                   value='{% if form.email.value %}{{ form.email.value }}{% endif %}'
                   required>

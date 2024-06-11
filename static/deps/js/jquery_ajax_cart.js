@@ -113,9 +113,11 @@ $(document).ready(function () {
 
 
      // Ловим собыитие клика по кнопке удалить товар из корзины
-     $(document).on("click", ".cart-clear", function (e) {
+        $(document).on("click", "#cartClear", function (e) {
         // Блокируем его базовое действие
         e.preventDefault();
+
+        var goodsInCartCount = $("#goods-in-cart-counter");
 
         // Из атрибута href берем ссылку на контроллер django
         var cartClear = $(this).data("url");
@@ -134,6 +136,8 @@ $(document).ready(function () {
                 if (cartCount==0) {
                     $("#goods-in-cart-counter").hide();
                 }
+
+                goodsInCartCount.text(data.quantity);
 
                 // Меняем содержимое корзины на ответ от django (новый отрисованный фрагмент разметки корзины)
                 var cartItemsContainer = $("#cart-items-container");

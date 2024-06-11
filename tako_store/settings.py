@@ -40,12 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
 
     'django_extensions',
+    'social_django',
 
     'main',
     'goods',
-    'users',
     'carts',
     'favorites',
+    'users',
     'orders',
 ]
 
@@ -84,11 +85,6 @@ WSGI_APPLICATION = 'tako_store.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tako',
@@ -152,3 +148,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_URL = '/user/login/'
+
+
+SOCIAL_AUTH_POSTGRES_JSONFIELD_ENABLED = True
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.steam.SteamOpenId',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = 'Ov23ctC0JGnhh0Yuf1vs'
+SOCIAL_AUTH_GITHUB_SECRET = '1a806fef8f06b53a3f9174c65074ba41d671422a'
+
+LOGIN_REDIRECT_URL = '/'
+
+
+SOCIAL_AUTH_STEAM_API_KEY = 'EB50D6EC8CE82EB996D0F7F2C624054D'
+
+SOCIAL_AUTH_STEAM_EXTRA_DATA = ['player']

@@ -325,12 +325,32 @@
   gap: 10px;
 }
 
-.cart-clear {
-  font-size: 15px;
-  cursor: pointer;
+.cart-clear__modal, .cart-clear {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0;
+  position: sticky;
+  top: -20px;
+  background: #fff;
 }
 
-.cart-clear:hover {
+.cart-clear__modal  span, .cart-clear span {
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.cart-clear__modal span:hover, .cart-clear span:hover {
   transition: all .4s;
   color: rgb(225, 0, 249);
+}
+
+.cart-clear {
+  top: 80px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.cart-clear span {
+  margin: 0;
 }

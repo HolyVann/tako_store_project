@@ -15,7 +15,7 @@
 
 .modal-items__container {
   position: absolute;
-  top: 65px;
+  top: 70px;
   right: 0px;
   left: 0px;
   bottom: 0px;
@@ -38,6 +38,8 @@
   border-bottom: solid #e9e9ef 1px;
   display: flex;
   align-items: center;
+  z-index: 2;
+  position: relative;
 }
 
 .modal-head>* {
@@ -55,7 +57,8 @@
 .modal__cart-close>span, .modal__favorites-close>span {
   color: #000;
   font-size: 54px;
-  padding-right: 25px;
+  margin-right: 25px;
+  height: 70px;
 }
 
 .modal__cart-close, .modal__favorites-close{

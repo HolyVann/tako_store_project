@@ -28,6 +28,7 @@ $(document).ready(function () {
       },
       success: function (data) {
         // Сообщение
+        successMessage.css('z-index', '6');
         successMessage.html(data.message);
         successMessage.fadeIn(400);
         // Через 7сек убираем сообщение
