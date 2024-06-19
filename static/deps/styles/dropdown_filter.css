@@ -68,6 +68,13 @@
   gap: 20px;
 }
 
+
+.price-filter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .price-filter__content {
   display: none;
   position: absolute;
@@ -142,4 +149,23 @@
 
 .show {
   display:block;
+}
+
+.reset-filter-form button {
+  all: unset;
+  font-family: 'Roboto-Light';
+  font-size: 15px;
+  color: #000;
+  opacity: .7;
+  display: flex;
+}
+
+.reset-filter-form button svg {
+  transition: all .4s;
+}
+
+.reset-filter-form button svg:hover {
+  color: rgb(225, 0, 249);
+  opacity: 1;
+  cursor: pointer;
 }

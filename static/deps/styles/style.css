@@ -1213,7 +1213,9 @@ main {
   gap: 5px;
 }
 
-.product-page__size, .product-page__size-link {
+.product-page__size,
+.product-page__size-link,
+.product-page__size-null {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1221,10 +1223,15 @@ main {
   height: 35px;
 }
 
-.product-page__size {
+.product-page__size,
+.product-page__size-null {
   font-size: 15px;
   color: #fff;
   background-color: #000;
+}
+
+.product-page__size-null {
+  opacity: .3;
 }
 
 .product-page__size-link {

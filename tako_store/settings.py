@@ -158,7 +158,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.steam.SteamOpenId',
 
     'django.contrib.auth.backends.ModelBackend',
-    
+
 )
 
 SOCIAL_AUTH_GITHUB_KEY = 'Ov23ctC0JGnhh0Yuf1vs'
@@ -170,12 +170,3 @@ LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_STEAM_API_KEY = 'EB50D6EC8CE82EB996D0F7F2C624054D'
 
 SOCIAL_AUTH_STEAM_EXTRA_DATA = ['player']
-
-
-# DEFAULT_FROM_EMAIL = 'sankasasanka@yandex.ru'
-# EMAIL_HOST = 'smtp.yandex.ru'
-# EMAIL_PORT = 465
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
-# EMAIL_HOST_USER = 'sankasasanka@yandex.ru'
-# EMAIL_HOST_PASSWORD = 'wzveozsluadfwlqh'

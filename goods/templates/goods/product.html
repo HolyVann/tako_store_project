@@ -82,7 +82,11 @@
             {% if product_variant.size.slug == variant.size.slug %}
               <div class='product-page__size'>{{ variant.size }}</div>
             {% else %}
-              <a href="{% url 'catalog:product' product.slug variant.size.slug %}" class='product-page__size-link'>{{ variant.size }}</a>
+              {% if variant.quantity == 0 %}
+                <div class='product-page__size-null'>{{ variant.size }}</div>
+              {% else %}
+                <a href="{% url 'catalog:product' product.slug variant.size.slug %}" class='product-page__size-link'>{{ variant.size }}</a>
+              {% endif %}
             {% endif %}
           {% endfor %}
         </div>

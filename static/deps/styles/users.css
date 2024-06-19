@@ -181,7 +181,7 @@ color: rgb(225, 0, 249);
 }
 
 .orders {
-  width: 100%;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 40px;

@@ -14,6 +14,11 @@ def catalog(request):
     price_from = request.GET.get('price_from', None)
     price_to = request.GET.get('price_to', None)
 
+    if price_from or price_to:
+        filter_price = True
+    else:
+        filter_price = False
+
     page_filter = 'По умолчанию'
 
     if query:
@@ -86,6 +91,7 @@ def catalog(request):
         'goods': current_page,
         'page_title': page_title,
         'page_filter': page_filter,
+        'filter_price': filter_price,
     }
 
     return render(request, "goods/catalog.html", context)
@@ -94,9 +100,13 @@ def catalog(request):
 def catalog_category(request, category_slug='all'):
     order_by = request.GET.get('order_by', None)
     page = request.GET.get('page', 1)
-    query = request.GET.get('q', None)
     price_from = request.GET.get('price_from', None)
     price_to = request.GET.get('price_to', None)
+
+    if price_from or price_to:
+        filter_price = True
+    else:
+        filter_price = False
 
     page_filter = 'По умолчанию'
 
@@ -235,6 +245,7 @@ def catalog_category(request, category_slug='all'):
         'slug_url': category_slug,
         'page_title': page_title,
         'page_filter': page_filter,
+        'filter_price': filter_price,
     }
 
     return render(request, "goods/catalog_category.html", context)
@@ -245,6 +256,11 @@ def new(request):
     price_from = request.GET.get('price_from', None)
     price_to = request.GET.get('price_to', None)
     page = request.GET.get('page', 1)
+
+    if price_from or price_to:
+        filter_price = True
+    else:
+        filter_price = False
 
     page_filter = 'По умолчанию'
 
@@ -314,6 +330,7 @@ def new(request):
         'page_title': 'Новинки',
         'goods': current_page,
         'page_filter': page_filter,
+        'filter_price': filter_price,
     }
 
     return render(request, "goods/new.html", context)
@@ -323,6 +340,11 @@ def sale(request):
     order_by = request.GET.get('order_by', None)
     price_from = request.GET.get('price_from', None)
     price_to = request.GET.get('price_to', None)
+
+    if price_from or price_to:
+        filter_price = True
+    else:
+        filter_price = False
 
     page_filter = 'По умолчанию'
 
@@ -393,6 +415,7 @@ def sale(request):
         'page_title': 'Sale',
         'goods': current_page,
         'page_filter': page_filter,
+        'filter_price': filter_price,
     }
 
     return render(request, "goods/sale.html", context)
@@ -441,6 +464,11 @@ def brands_catalog(request, brand_slug):
     order_by = request.GET.get('order_by', None)
     price_from = request.GET.get('price_from', None)
     price_to = request.GET.get('price_to', None)
+
+    if price_from or price_to:
+        filter_price = True
+    else:
+        filter_price = False
 
     page_filter = 'По умолчанию'
 
