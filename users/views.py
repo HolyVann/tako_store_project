@@ -49,11 +49,11 @@ def registration(request):
       if form.is_valid():
         form.save()
 
-        user.backend = 'django.contrib.auth.backends.ModelBackend'
 
         session_key = request.session.session_key
 
         user = form.instance
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
         auth.login(request, user, backend=user.backend)
 
         if session_key:
