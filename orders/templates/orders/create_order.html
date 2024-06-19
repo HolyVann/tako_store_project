@@ -44,16 +44,16 @@
 
             <div class="order-information-title">Способ доставки</div>
             <div class="radio-button-container">
-              <input type="radio" name="requires_delivery" id="id_requires_delivery"  value="0">
+              <input type="radio" name="requires_delivery" id="id_requires_delivery"  value="0" checked>
               <label for="id_requires_delivery">Самовывоз</label>
             </div>
 
             <div class="radio-button-container">
-              <input type="radio" name="requires_delivery" id="id_requires_delivery" value="1" checked>
+              <input type="radio" name="requires_delivery" id="id_requires_delivery" value="1" >
               <label for="id_requires_delivery">Доставка курьером</label>
             </div>
 
-            <input type="text" placeholder="Адрес доставки" id="id_delivery_address" name='delivery_address'>
+            <input type="text" placeholder="Адрес доставки" id="id_delivery_address" name='delivery_address' style="display: none;">
             {% if form.delivery_address.errors %}
               <div class="field-errors">{{ form.delivery_address.errors }}</div>
             {% endif %}
@@ -79,14 +79,15 @@
           <button class='order-button' type="submit">Оформить заказ</button>
         </div>
 
-        <div class="order-items-container">
-          <div class="order-items-container__title">Ваш заказ</div>
-
-          <div class="order-items-container__products">
-            {% include "orders/includes/order_products.html" %}
-          </div>
-        </div>
       </form>
+      
+      <div class="order-items-container">
+        <div class="order-items-container__title">Ваш заказ</div>
+
+        <div class="order-items-container__products">
+          {% include "orders/includes/order_products.html" %}
+        </div>
+      </div>
     </div>
   </div>
 {% endblock page %}

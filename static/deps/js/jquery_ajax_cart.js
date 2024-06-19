@@ -37,9 +37,10 @@ $(document).ready(function () {
             },
             success: function (data) {
                 // Сообщение
+                successMessage.addClass('cartMessage');
                 successMessage.html(data.message);
                 successMessage.fadeIn(400);
-                // // Через 7сек убираем сообщение
+                // Через 7сек убираем сообщение
                 setTimeout(function () {
                     successMessage.fadeOut(400);
                 }, 5000);
@@ -58,10 +59,6 @@ $(document).ready(function () {
                 var cartItemsContainer = $("#cart-items-container");
                 cartItemsContainer.html(data.cart_items_html);
 
-            },
-
-            error: function (data) {
-                console.log("Ошибка при добавлении товара в корзину");
             },
         });
     });
@@ -143,10 +140,6 @@ $(document).ready(function () {
                 var cartItemsContainer = $("#cart-items-container");
                 cartItemsContainer.html(data.cart_items_html);
             },
-
-            error: function (data) {
-                console.log("Ошибка при добавлении товара в корзину");
-            },
         });
     });
 
@@ -173,6 +166,7 @@ $(document).ready(function () {
 
     // Обработчик события для увеличения значения
     $(document).on("click", ".increase-quantity", function () {
+
         // Берем ссылку на контроллер django из атрибута data-cart-change-url
         var url = $(this).data("cart-change-url");
         // Берем id корзины из атрибута data-cart-id
@@ -200,13 +194,6 @@ $(document).ready(function () {
             },
 
             success: function (data) {
-                //  // Сообщение
-                // successMessage.html(data.message);
-                // successMessage.fadeIn(400);
-                //  // Через 7сек убираем сообщение
-                // setTimeout(function () {
-                //     successMessage.fadeOut(400);
-                // }, 5000);
 
                 // Изменяем количество товаров в корзине
                 var goodsInCartCount = $("#goods-in-cart-counter");
@@ -217,11 +204,6 @@ $(document).ready(function () {
                 // Меняем содержимое корзины
                 var cartItemsContainer = $("#cart-items-container");
                 cartItemsContainer.html(data.cart_items_html);
-
-
-            },
-            error: function (data) {
-                console.log("Ошибка при добавлении товара в корзину");
             },
         });
     }
@@ -231,9 +213,9 @@ $(document).ready(function () {
     var notification = $('#notification');
     // И через 7 сек. убираем
     if (notification.length > 0) {
-        setTimeout(function () {
-            notification.alert('close');
-        }, 5000);
+        // setTimeout(function () {
+        //     notification.alert('close');
+        // }, 5000);
     }
 
 

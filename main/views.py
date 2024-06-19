@@ -49,3 +49,5 @@ def contacts(request):
   page_title = 'Контакты'
 
   return render(request, 'main/contacts.html', locals())
+
+

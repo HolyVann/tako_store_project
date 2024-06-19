@@ -5,7 +5,7 @@ from users.models import User
 
 class OrderitemQueryset(models.QuerySet):
 
-  def totoal_price(self):
+  def total_price(self):
     return sum(cart.products_price() for cart in self)
 
   def total_quantity(self):
@@ -15,6 +15,19 @@ class OrderitemQueryset(models.QuerySet):
 
 
 class Order(models.Model):
+
+  status = (
+    ('Принят', 'Принят',),
+    ('В обработке', 'В обработке',),
+    ('Подтвержден', 'Подтвержден',),
+    ('Заказ в сборке', 'Заказ в сборке',),
+    ('Ожидание отправки', 'Ожидание отправки',),
+    ('Доставляется', 'Доставляется',),
+    ('Готов к получению', 'Готов к получению',),
+    ('Отменен', 'Отменен',),
+    ('Возврат', 'Возврат',),
+  )
+
   user = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, blank=True, null=True, verbose_name='Пользователь', default=None)
   created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
   phone_number = models.CharField(max_length=20, verbose_name='Номер телефона')
@@ -23,8 +36,8 @@ class Order(models.Model):
   delivery_address = models.TextField(null=True, blank=True, verbose_name='Адрес доставки')
   payment_on_get = models.BooleanField(default=False, verbose_name='Оплата при получении')
   is_paid = models.BooleanField(default=False, verbose_name='Оплачено')
-  status = models.CharField(max_length=50, default='В обработке', verbose_name='Статус заказа')
-  comment = models.CharField(max_length=150, verbose_name='Комментарий к заказу')
+  status = models.CharField(max_length=50, choices=status, default=status[0][0], verbose_name='Статус заказа')
+  comment = models.CharField(max_length=150, blank=True, null=True, verbose_name='Комментарий к заказу')
 
 
   class Meta:
@@ -34,7 +47,7 @@ class Order(models.Model):
 
 
   def __str__(self):
-    return f'Заказ № {self.pk} | Покупатель {self.user.first_name} {self.user.last_name}'
+    return f'Заказ № {self.pk}'
 
 
 class OrderItem(models.Model):

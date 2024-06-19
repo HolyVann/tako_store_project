@@ -37,7 +37,8 @@ def checkout(request):
               quantity = cart_item.quantity
 
               if product.quantity < quantity:
-                raise ValidationError(f'Недостаточное количество товара {name} на складе, в наличии - {product.quantity}')
+                # raise ValidationError(f'Недостаточное количество товара {name} на складе, в наличии - {product.quantity}')
+                raise ValidationError('Выбранное количесвто товара недотупно для заказа')
 
               OrderItem.objects.create(
                 order=order,
@@ -52,11 +53,11 @@ def checkout(request):
 
             cart_items.delete()
 
-            messages.success(request, f'Заказ оформлен!')
+            messages.success(request, f'Ваш заказ успешно оформлен')
 
             return redirect('main:index')
       except ValidationError as e:
-        messages.success(request, ''.join(e))
+        messages.error(request, ''.join(e))
         return redirect('orders:checkout')
   else:
     initial = {

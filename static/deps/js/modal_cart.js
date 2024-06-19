@@ -7,6 +7,7 @@ var cartBtn = document.getElementById("cartBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("modal__cart-close")[0];
 
+
 // When the user clicks on the button, open the modal
 cartBtn.onclick = function() {
     cartModal.style.display = "flex";
@@ -25,3 +26,11 @@ window.onclick = function(event) {
         cartModal.style.display = "none";
     }
 }
+
+
+document.addEventListener("click", event => {
+    if (event.target.matches(".cartMessage")) {
+        cartModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}, false);

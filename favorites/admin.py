@@ -16,3 +16,6 @@ class FavoritesAdmin(admin.ModelAdmin):
 
   def product_display(self, obj):
     return str(obj.product.name)
+
+  user_display.short_description = 'Имя пользователя'
+  product_display.short_description = 'Товар'

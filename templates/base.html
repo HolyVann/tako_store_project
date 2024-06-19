@@ -42,22 +42,23 @@
     {% block white %}{% endblock white %}
 
     {% block content %}{% endblock content %}
+    
+    <div class="button-up">
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="arrow-up-short" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
+        </symbol>
+      </svg>
+      <div class="btn-up btn-up_hide">
+        <svg class="btn-up-icon" role="img" aria-label="Прокрутить страницу к началу">
+          <use xlink:href="#arrow-up-short"></use>
+        </svg>
+      </div>
+    </div>
   </main>
 
   {% include 'includes/footer.html' %}
 
-  <div class="button-up">
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="arrow-up-short" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
-      </symbol>
-    </svg>
-    <div class="btn-up btn-up_hide">
-      <svg class="btn-up-icon" role="img" aria-label="Прокрутить страницу к началу">
-        <use xlink:href="#arrow-up-short"></use>
-      </svg>
-    </div>
-  </div>
 
   <script src={% static "deps/js/jquery/jquery-3.7.0.min.js" %}></script>
   <script src={% static "deps/js/jquery_ajax_cart.js" %}></script>

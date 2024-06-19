@@ -4,8 +4,58 @@
   <div id='notification' class="message-container">
     {% for message in messages %}
       {% if message.tags == 'success' %}
+      <div class="message-block">
+        <div class="close-btn-message" id="close-btn-message">
+          &times;
+        </div>
+
+        <div class="message-block-title">
+          Спасибо!
+        </div>
+
         <div class="succes-message">
-          {{message}}
+          <div>{{message}}</div>
+
+          <div>Мы свяжемся с вами в ближайшее время</div>
+
+          <div>
+            <div>
+              Статус заказа вы можете посмотреть в
+            </div>
+
+            <a class="profile-link-message" href="{% url 'user:profile' %}"> личном кабинете</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="main-block__link">
+            <a href="{% url 'catalog:index' %}">Перейти к покупкам</a>
+          </div>
+        </div>
+      </div>
+      {% else %}
+        <div class="message-block">
+          <div class="close-btn-message" id="close-btn-message">
+            &times;
+          </div>
+
+          <div class="message-block-title">
+            Ошибка при оформлении заказа!
+          </div>
+
+          <div class="succes-message">
+            <div>{{message}}</div>
+          </div>
+
+          <div>
+            <div>
+              Измените количесвто в
+              <a class="profile-link-message" href="{% url 'user:cart' %}"> корзине</a>
+              и повторите попытку
+            </div>
+          </div>
+
+          <div></div>
         </div>
       {% endif %}
     {% endfor %}

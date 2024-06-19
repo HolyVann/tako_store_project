@@ -38,12 +38,15 @@ def favorite_add(request):
   user_favorites = get_user_favorites(request)
 
   if exists:
-    message = f'<img src="{ product.image.url }"/> <div class="jq-container"> <div>Добавлено в избранное</div> <div>{product}</div> </div>'
+    message = f'''<img class="favoritesMessage" src="{ product.image.url }"/>
+    <div class="jq-container favoritesMessage">
+      <div favoritesMessage>Добавлено в избранное</div> <div class="favoritesMessage">{product}</div>
+    </div>'''
   else:
-    message = f'<img src="{ product.image.url }"/> <div class="jq-container"> <div>В избранном</div> <div>{product}</div> </div>'
-
-
-
+    message = f'''<img class="favoritesMessage" src="{ product.image.url }"/>
+    <div class="jq-container favoritesMessage">
+      <div favoritesMessage> В избранном</div> <div class="favoritesMessage">{product}</div>
+    </div>'''
   if user_favorites.exists():
     favorites_items_html = render_to_string(
       "favorites/includes/favorites_product.html", {'favorites': user_favorites}, request=request

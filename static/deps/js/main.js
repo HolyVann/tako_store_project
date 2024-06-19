@@ -51,3 +51,17 @@ const btnUp = {
 }
 
 btnUp.addEventListener();
+
+
+var messageClose = document.getElementById('close-btn-message');
+
+var messageContainer = document.getElementById('notification');
+
+if (getComputedStyle(messageContainer).display == 'flex') {
+  document.body.style.overflow = 'hidden';
+}
+
+messageClose.onclick = function() {
+  messageContainer.style.display = "none";
+  document.body.style.overflow = "";
+}

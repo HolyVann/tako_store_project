@@ -1,4 +1,3 @@
-/* Dropdown Button */
 .dropbtn {
   background-color: white;
   border: none;
@@ -8,27 +7,33 @@
   font-family: "Roboto-Light";
 }
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  transition: all 0.4s;
+.dropbtn:hover {
   color: rgb(225, 0, 249);
+  transition: all .4s;
+}
+
+.filter-transform {
+  transform: rotate(180deg);
+}
+
+.dropbtn svg {
+  transition: transform .4s ;
 }
 
 .filter-wrap {
   display: flex;
   justify-content: flex-end;
+  gap: 300px;
   position: sticky;
   top: 79px;
   background-color: #fff;
   z-index: 2;
 }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown-filter {
+.dropdown-filter, .price-filter {
   position: relative;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-filter__content {
   display: none;
   position: absolute;
@@ -38,29 +43,103 @@
   z-index: 2;
   top: 55px;
   right: 0px;
-  padding: 10px;
+  padding: 20px;
 }
 
-/* Links inside the dropdown */
 .dropdown-filter__content button {
-  padding: 10px;
   border: none;
   background-color: #fff;
   display: flex;
-  border-radius: 3%/13%;
   font-family: "Roboto-Light";
   font-size: 15px;
   width: 100%;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-filter__content button:hover {
   transition: all 0.2s;
   color: rgb(225, 0, 249);
   border-radius: 3%/13%;
+  cursor: pointer;
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.dropdown-filter__content form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price-filter__content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.2);
+  z-index: 2;
+  top: 55px;
+  padding: 20px;
+}
+
+.price-filter__content form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price-filter__fields {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.price-filter__fields input {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #ebedee;
+  padding-left: 15px;
+  font-family: 'Roboto-Light';
+}
+
+.price-filter__fields input:hover, .price-filter__fields input:focus-within {
+  border: solid 1px #000;
+}
+
+.price-filter__fields input:focus-visible {
+  outline: none;
+}
+
+.price-filter__fields input::placeholder {
+  font-size: 15px;
+  font-family: 'Roboto-Light';
+}
+
+.price-filter__fields div {
+  background-color: rgba(79, 62, 53, .6);
+  height: 1px;
+  width: 15px;
+}
+
+.price-filter__content form button {
+  background-color: #000;
+  font-family: "Roboto-Light";
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 17px 50px;
+  color: #fff;
+  border: solid 1px #000;
+  justify-content: center;
+  transition: all .5s;
+}
+
+.price-filter__content form button:hover {
+  color: rgb(225, 0, 249);
+  border: #000 solid 1px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
 .show {
   display:block;
 }

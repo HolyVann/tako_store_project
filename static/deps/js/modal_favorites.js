@@ -25,3 +25,11 @@ window.onclick = function(event) {
         favoritesModal.style.display = "none";
     }
 }
+
+document.addEventListener("click", event => {
+    if (event.target.matches(".favoritesMessage")) {
+        favoritesModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}, false);
+

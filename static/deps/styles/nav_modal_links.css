@@ -1,7 +1,9 @@
+#navModalBtn svg {
+  transition: all .5s;
+}
 
-#navModalBtn:hover {
+#navModalBtn svg:hover {
   color: rgb(225, 0, 249);
-  transition: all .4s;
   cursor: pointer;
 }
 

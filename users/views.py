@@ -1,7 +1,7 @@
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from django.contrib import auth, messages
+from django.contrib import auth
 from django.urls import reverse
 from carts.models import Cart
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
@@ -23,7 +23,6 @@ def login(request):
 
       if user:
         auth.login(request, user)
-        # messages.success(request, f'{username}, Добро пожаловать')
 
         if session_key:
           Cart.objects.filter(session_key=session_key).update(user=user)
@@ -50,15 +49,16 @@ def registration(request):
       if form.is_valid():
         form.save()
 
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+
         session_key = request.session.session_key
 
         user = form.instance
-        auth.login(request, user)
+        auth.login(request, user, backend=user.backend)
 
         if session_key:
           Cart.objects.filter(session_key=session_key).update(user=user)
 
-        # messages.success(request, f'{user.username}, Вы успешно зарегестрированы')
         return HttpResponseRedirect(reverse('main:index'))
   else:
       form = UserRegistrationForm()
@@ -76,7 +76,7 @@ def profile(request):
     form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
     if form.is_valid():
       form.save()
-      # messages.success(request, 'Личные данные обновлены')
+
       return HttpResponseRedirect(reverse('user:profile'))
   else:
     form = ProfileForm(instance=request.user)

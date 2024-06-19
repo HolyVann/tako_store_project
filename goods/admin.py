@@ -104,3 +104,5 @@ class GalleryAdmin(admin.ModelAdmin):
 
   def product_display(self, obj):
     return str(obj.product.name)
+
+  product_display.short_description = 'Продукт'

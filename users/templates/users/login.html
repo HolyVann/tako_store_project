@@ -40,7 +40,7 @@
           {{ form.non_field_errors }}
         </div>
       {% endif %}
-      <!-- <a href="" class="password">Забыли пароль?</a> -->
+      {% comment %} <!-- <a href="{% url "user:password_reset" %}" class="password">Забыли пароль?</a> --> {% endcomment %}
 
       <button type="submit">Войти</button>
 

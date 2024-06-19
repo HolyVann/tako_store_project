@@ -15,9 +15,10 @@
 }
 
 .profile-container {
-  gap: 100px;
-  justify-content: flex-start;
+  gap: 50px;
+  justify-content: center;
   margin: 0;
+  margin-top: 30px;
 }
 
 .registration-form, .login-form, .profile-form {
@@ -47,12 +48,17 @@
   align-items: center;
   font-size: 20px;
   border: solid 1px #000;
+  transition: all .5s;
 }
 
-.login-form button:hover, .registrations-link:hover, .profile-form button:hover, .registration-form button:hover, .logout:hover, .admin:hover {
+.login-form button:hover,
+.registrations-link:hover,
+.profile-form button:hover,
+.registration-form button:hover,
+.logout:hover,
+.admin:hover {
   color: rgb(225, 0, 249);
   border: solid 1px #000;
-  transition: all .5s;
   cursor: pointer;
   background-color: #fff;
 }
@@ -79,19 +85,26 @@
   gap: 15px;
 }
 
+.social-login__links {
+  display: flex;
+  gap: 20px;
+}
+
 .social-login__links a {
   text-decoration: none;
   color: #000;
-  margin: 0px 15px;
 }
 
 .social-login__title {
   font-size: 15px;
 }
 
-.social-login__links a:hover {
-  color: rgb(225, 0, 249);
-  transition: all .4s;
+.social-login__links a svg:hover {
+color: rgb(225, 0, 249);
+}
+
+.social-login__links a svg {
+  transition: all .5s;
 }
 
 .registrations-link, .avatar, .logout, .admin {
@@ -104,6 +117,7 @@
   font-size: 15px;
   padding: 17px 0px;
   border: solid 1px #000;
+  transition: all .5s;
 }
 
 .password {
@@ -166,7 +180,44 @@
   font-size: 20px;
 }
 
-.orders-catalog a,.entrance a {
+.orders {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.orders-catalog {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+.orders-catalog a {
+  background-color: #000;
+  font-family: "Roboto-Light";
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 17px 50px;
+  color: #fff;
+  border: solid 1px #000;
+}
+
+.orders-catalog a:hover {
+  color: rgb(225, 0, 249);
+  transition: all .5s;
+  border: #000 solid 1px;
+  background-color: #fff;
+}
+
+.entrance a {
   text-decoration:  solid underline .1px;
 }
 
@@ -174,13 +225,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  color: rgb(225, 0, 249);
 }
 
 .entrance {
   padding: 200px 0px;
-
+  color: rgb(225, 0, 249);
+  gap: 5px;
 }
 
 .personal-login:hover, .orders-catalog a:hover {
@@ -197,10 +247,6 @@
 .field-errors ul {
   list-style-type: none;
   text-decoration: solid underline .1px;
-}
-
-.admin {
-  margin-bottom: 300px;
 }
 
 .password-control {

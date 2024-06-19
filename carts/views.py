@@ -34,11 +34,11 @@ def cart_add_modal(request):
     user_cart = get_user_carts(request)
 
     if exists:
-        message = f'''<img src="{ product_variant.product.image.url }"/>
-        <div class="jq-container"> <div>Добавлено в корзину</div> <div>{product_variant.product} { product_variant.size.name }</div></div>'''
+        message = f'''<img class ="cartMessage" src="{ product_variant.product.image.url }"/>
+        <div class="jq-container cartMessage"> <div class ="cartMessage">Добавлено в корзину</div> <div class ="cartMessage">{product_variant.product} { product_variant.size.name }</div></div>'''
     else:
-        message = f'''<img src="{ product_variant.product.image.url }"/>
-        <div class="jq-container"> <div>В корзине</div> <div>{product_variant.product} { product_variant.size.name }</div> </div>'''
+        message = f'''<img class ="cartMessage" src="{ product_variant.product.image.url }"/>
+        <div class="jq-container cartMessage"> <div class ="cartMessage">В корзине</div> <div class ="cartMessage">{product_variant.product} { product_variant.size.name }</div> </div>'''
 
     if user_cart.exists():
         cart_items_html = render_to_string(
@@ -48,7 +48,6 @@ def cart_add_modal(request):
         )
 
     response_data = {
-        'product': 'product132',
         "message": message,
         "cart_items_html": cart_items_html,
         'exists': exists,

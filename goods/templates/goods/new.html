@@ -11,14 +11,48 @@
 
   <div class="page-items">
     <div class="filter-wrap">
+      <div class="price-filter">
+        <button onclick="priceFilter()" class="dropbtn">Цена
+          <svg id="filterPriceSvg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </button>
+
+        <div class="price-filter__content" id="priceFilter">
+          <form method="get" action="{% url 'catalog:new' %}">
+            <div class="price-filter__fields">
+              <input type="text" name="price_from" placeholder="от">
+              <div></div>
+              <input type="text" name="price_to" placeholder="до">
+            </div>
+
+            <button type="submit">Применить</button>
+          </form>
+        </div>
+      </div>
+
       <div class="dropdown-filter">
-        <button onclick="myFunction()" class="dropbtn">Сортировать</button>
+        <button onclick="myFunction()" class="dropbtn">{{ page_filter }}
+          <svg id="filterSvg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </button>
         <div id="myDropdown" class="dropdown-filter__content">
 
-          <form class='filter-form' action="{% url 'catalog:sale' slug_url %}" method="get">
+          <form class='filter-form' action="{% url 'catalog:new' %}" method="get">
+            {% if request.GET.price_to and request.GET.price_from %}
+              <input type="hidden" name="price_to" value="{{ request.GET.price_to }}">
+              <input type="hidden" name="price_from" value="{{ request.GET.price_from }}">
+            {% elif request.GET.price_from %}
+              <input type="hidden" name="price_from" value="{{ request.GET.price_from }}">
+            {% elif request.GET.price_to %}
+              <input type="hidden" name="price_to" value="{{ request.GET.price_to }}">
+            {% endif %}
+
             <button type="submit" name="order_by" value="default">По умолчанию</button>
+            <button type="submit" name="order_by" value="-discount">По величине скидки</button>
             <button type="submit" name="order_by" value="price">По возрастанию цены</button>
-            <button type="submit" name="order_by" value="price">По убыванию цены</button>
+            <button type="submit" name="order_by" value="-price">По убыванию цены</button>
           </form>
         </div>
       </div>

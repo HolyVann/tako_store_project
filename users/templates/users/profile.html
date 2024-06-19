@@ -6,12 +6,11 @@
 {% endblock modal_cart %}
 
 {% block page %}
-
   {% include "includes/breadcrumbs.html" %}
 
   <div class="profile-container">
     <div class="personal">
-      <div class="page-title">Личные данные</div>
+      <div class="orders-title">Личные данные</div>
         <form action="{% url "user:profile" %}" method='post' enctype='multipart/form-data' class="profile-form">
           {% csrf_token %}
 
@@ -93,43 +92,103 @@
 
       {% if orders %}
       <div class="orders-container">
-        <div class="page-title">Ваши заказы</div>
+        <div class="orders-title">Ваши заказы</div>
 
         {% for order in orders %}
           <div class="order-container">
-            <div class="order-info">
-              <div>Заказ №{{ order.id }} - {{ order.created_timestamp }}</div>
-              <div>Статус заказа:
-                <span class="status">{{ order.status }}</span>
-              </div>
-            </div>
+            <div class="order-container__main">
+              <div class="order-info-container">
+                <div class="order-info">
+                  Заказ: <span>№{{ order.id }}</span>
+                </div>
 
-            <div class="order-info-container">
-              <div class="order-head">
-                <div>Товар</div>
+                <div class="order-info">
+                  Дата заказа: <span>{{ order.created_timestamp }}</span>
+                </div>
 
-                <div>Количетсво</div>
+                <div class="order-info">
+                  Статус: <span>{{ order.status }}</span>
+                </div>
 
-                <div>Цена</div>
+                {% if order.payment_on_get %}
+                  <div class="order-info">
+                    Оплата: <span>При получении</span>
+                  </div>
+                {% else %}
+                  <div class="order-info">
+                    Оплата: <span>Оплачено онлайн</span>
+                  </div>
+                {% endif %}
 
-                <div>Общая стоимость</div>
-              </div>
+                <div class="order-info">
+                  Cумма заказа: <span>{{ order.orderitem_set.total_price }} BYN</span>
+                </div>
 
-              {% for order_item in order.orderitem_set.all %}
-                <div class="order-main">
-                  <div>
-                    <a href="{% url 'goods:product' order_item.product_variant.product.slug %}">
-                      {{ order_item.product_variant.product.brand.name}} {{ order_item.product_variant}}
-                    </a>
+                {% if order.requires_delivery %}
+                  <div class="order-info">
+                    Способ доставки: <span>Доставка курьером</span>
                   </div>
 
-                  <div>{{ order_item.quantity }}</div>
+                  <div class="order-info">
+                    Адрес доставки: <span>{{ order.delivery_address }}</span>
+                  </div>
+                {% else %}
+                  <div class="order-info">
+                    Способ доставки: <span>Самовывоз</span>
+                  </div>
 
-                  <div>{{ order_item.price }}</div>
+                  <div class="order-info">
+                    Пункт выдачи: <span>Барановичи, пр-т Советский, дом 35, 3-й этаж</span>
+                  </div>
+                {% endif %}
+              </div>
 
-                  <div>{{ order_item.products_price }}</div>
+              {% if order.orderitem_set.all|length > 2 %}
+                <div class="order-container__products-overflow">
+                  {% for order_item in order.orderitem_set.all %}
+                    <div class='order-product'>
+                      <a class='order-cart-img' href="{% url "catalog:product" order_item.product_variant.product.slug %}">
+                        <img class="order-product__img" src="{{ order_item.product_variant.product.image.url }}">
+                        <span class="counter-order">{{ order_item.quantity }}</span>
+                      </a>
+
+
+                      <div class="order-product-title-wrap">
+                        <a href="{% url "catalog:product" order_item.product_variant.product.slug %}" class="cart-product__title">
+                          {{ order_item.product_variant.product.name }} {{ order_item.product_variant.product.brand}} {{ order_item.product_variant.size.name }}
+                        </a>
+
+                        <div class="order-product__prices">
+                          <div class="cart-product__price">{{ order_item.products_price }} BYN</div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
                 </div>
-              {% endfor %}
+              {% else %}
+              <div class="order-container__products">
+                {% for order_item in order.orderitem_set.all %}
+                  <div class='order-product'>
+                    <a class='order-cart-img' href="{% url "catalog:product" order_item.product_variant.product.slug %}">
+                      <img class="order-product__img" src="{{ order_item.product_variant.product.image.url }}">
+                      <span class="counter-order">{{ order_item.quantity }}</span>
+                    </a>
+
+
+                    <div class="order-product-title-wrap">
+                      <a href="{% url "catalog:product" order_item.product_variant.product.slug %}" class="cart-product__title">
+                        {{ order_item.product_variant.product.name }} {{ order_item.product_variant.product.brand}} {{ order_item.product_variant.size.name }}
+                      </a>
+
+                      <div class="order-product__prices">
+                          <div class="cart-product__price">{{ order_item.products_price }} BYN</div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+
             </div>
           </div>
         {% endfor %}
@@ -138,8 +197,8 @@
       <div class="orders">
         <div class="orders-title">Заказы</div>
 
-        <div class="orders-catalog">Список заказов пока пуст.
-          <a href="{% url 'catalog:index' %}">Продолжить покупки.</a>
+        <div class="orders-catalog">Список заказов пока пуст
+          <a href="{% url 'catalog:index' %}">Продолжить покупки</a>
         </div>
       </div>
     {% endif %}
